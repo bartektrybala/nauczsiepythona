@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+    <meta charset="utf-8"/>
+    <title>Aplikacja do nauki Pythona</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="container">
+      <a href="{% url 'chapters:index' %}"><div id="logo">
+        <div id="logo_napis">Aplikacja do nauki Pythona</div>
+        <div id="logo_foto">
+            <img src="{% static '/img/python.png' %}" height="80px">
+        </div>
+      </div></a>
+    <div id="nav">
+        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Application</div></a>
+        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Pomoc</div></a>
+        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Literatura</div></a>
+        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Aplikacje</div></a>
+        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Kodowanie</div></a>
+        <a class="tile_a" href="{% url 'chapters:chapters' %}"><div class="tile">Chapters</div></a>
+
+    </div>
+    <div id="content">
+        {% block content %}{% endblock content %}
+    </div>
+    <div id="ad">
+        <img src="{% static '/img/sreklama.jpg' %}"/>
+    </div>
+    <div id="footer">
+        <img src="{% static 'img/logoPWr.png' %}">
+    </div>
+
+  </div>
+</body>
+</html>

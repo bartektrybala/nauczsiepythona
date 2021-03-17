@@ -1,0 +1,14 @@
+{% extends 'chapters/baza.html' %}
+
+{% block content %}
+  <p>Temat: {{ topic }}</p>
+  <p>Treść tematu:</p>
+  <p>{{ topic.text|linebreaks }}</p>
+  <p>Spróbuj sam:</p>
+
+  <form action="{% url 'chapters:approach' topic.id %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Run</button>
+  </form>
+{% endblock content %}

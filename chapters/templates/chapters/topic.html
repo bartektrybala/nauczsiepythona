@@ -1,0 +1,16 @@
+{% extends "chapters/baza.html" %}
+
+{% block content %}
+<p>Chapter: {{ chapter }}</p>
+<p>Topics: </p>
+<ul>
+    {% for topic in topics %}
+    <li>
+        <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
+    </li>
+    {% empty %}
+      <li>No topics have been added yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

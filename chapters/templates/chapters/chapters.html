@@ -1,0 +1,45 @@
+
+<html lang="pl">
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        .ch_button
+        {
+          width: 90%;
+          border: 1px solid #7367F0;
+          cursor: pointer;
+          padding: 5px;
+          margin-bottom: 10px;
+          border-radius: 3px;
+          font-size: 20px;
+          text-align: center;
+        }
+        .ch_button:hover
+        {
+          color: #fff;
+          background-color: #7367F0
+        }
+        .ch_button_a
+        {
+          text-decoration: none;
+        }
+        .ch_button_a:hover
+        {
+          color: #fff;
+        }
+    </style>
+</head>
+{% extends "chapters/baza.html" %}
+
+{% block content %}
+<p>Chapters:</p>
+<ul>
+    {% for chapter in chapters %}
+    <a class="ch_button_a" href="{% url 'chapters:topic' chapter.id %}"><div class="ch_button">{{ chapter }}</div></a>
+    {% empty %}
+      <li>No chapters have been added yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+</html>
