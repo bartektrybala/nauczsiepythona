@@ -93,3 +93,18 @@ body
 {
   color: #fff;
 }
+.log
+{
+  display: inline-block;
+  height: 20px;
+  background-color: orange;
+  padding: 5px;
+  border-radius: 3px;
+  margin:0 auto;
+  margin-bottom: 5px;
+}
+.log_a
+{
+  text-decoration: none;
+  color: #fff;
+}

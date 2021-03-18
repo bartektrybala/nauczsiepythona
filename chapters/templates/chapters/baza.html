@@ -1,11 +1,11 @@
+<!DOCTYPE HTML>
 {% load static %}
 
-<!DOCTYPE HTML>
 <html lang="pl">
 <head>
     <meta charset="utf-8"/>
     <title>Aplikacja do nauki Pythona</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -29,6 +29,13 @@
         {% block content %}{% endblock content %}
     </div>
     <div id="ad">
+        {% if user.is_authenticated %}
+          Hello, {{ user.username }}.
+        <a href="{% url 'users:logout' %}" class="log_a"><div class="log">Wyloguj się</div></a>
+        {% else %}
+          <a href="{% url 'users:login' %}" class="log_a"><div class="log">Zaloguj się</div></a>
+          <a href="{% url 'users:register' %}" class="log_a"><div class="log">Zarejestruj się</div></a>
+        {% endif %}
         <img src="{% static '/img/sreklama.jpg' %}"/>
     </div>
     <div id="footer">
