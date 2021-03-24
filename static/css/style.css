@@ -5,106 +5,51 @@ body
 }
 #container
 {
-  width: 1000px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
-#logo
-{
-  width: 996px;
-  height: 100px;
-  border: 2px solid black;
-}
-#logo_napis
-{
-  width: 800px;
-  float: left;
-  margin-top: 15px;
-  background-position: center;
-  padding: 10px;
-  height: 60px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 60px;
-  color: black;
-}
-#logo_foto
-{
-  float: left;
-  width: 100px;
-  margin-left: 30px;
-  padding: 10px;
-}
-#nav
-{
-  clear: both;
-  float: left;
-  background-color: lightgrey;
-  width: 160px;
-  min-height: 620px;
-  padding: 10px;
-}
+
 #content
 {
   float: left;
   padding: 20px;
-  width: 600px;
-}
-#ad
-{
-  float: left;
-  width: 160px;
-  min-height: 620px;
-  padding: 10px;
-  background-color: lightgray;
+  width: 800px;
 }
 #footer
 {
   clear: both;
-  width: 960px;
   padding: 10px;
-  color: white;
   text-align: center;
-
+  margin-top: 20px;
 }
-.tile
+.lista-tematow
 {
-  width: 140px;
-  height: 30px;
-  padding: 10px;
-  background: none;
-  text-align: center;
-  border-radius: 25px;
-  border: 1px solid #3498db;
-  font-size: 25px;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-.tile:hover
-{
-  color: #fff;
-  background-color: #3498db;
-}
-.tile_a
-{
+  float: left;
+  width: 500px;
+  font-size: 20px;
   text-decoration: none;
 }
-.tile_a:hover
+.ikonka-python
 {
-  color: #fff;
+  float: left;
+  margin-left: 100px;
+  margin-top: 100px;
 }
-.log
+.navigation-class
 {
-  display: inline-block;
-  height: 20px;
-  background-color: orange;
-  padding: 5px;
-  border-radius: 3px;
-  margin:0 auto;
-  margin-bottom: 5px;
+  float: left;
+  margin-top: 100px;
 }
-.log_a
+.result
 {
-  text-decoration: none;
-  color: #fff;
+  float: left;
+}
+.output
+{
+  background-color: lightgrey;
+  float: right;
+  margin-top: 300px;
+  margin-right: 150px;
+  padding: 50px;
 }

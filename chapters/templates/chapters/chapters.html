@@ -31,8 +31,11 @@
 </head>
 {% extends "chapters/baza.html" %}
 
+{% block header %}
+  <h2>Chapters:</h2>
+{% endblock header %}
+
 {% block content %}
-<p>Chapters:</p>
 <ul>
     {% for chapter in chapters %}
     <a class="ch_button_a" href="{% url 'chapters:topic' chapter.id %}"><div class="ch_button">{{ chapter }}</div></a>

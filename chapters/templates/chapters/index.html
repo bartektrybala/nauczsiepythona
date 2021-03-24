@@ -1,5 +1,21 @@
 {% extends "chapters/baza.html" %}
 
+{% block header %}
+  <div class="jumbotron">
+    <h1>Aplikacja do nauki Pythona</h1>
+  </div>
+{% endblock header %}
+
 {% block content %}
-  <p>Application's page</p>
+  {% if user.is_authenticated %}
+    <h2><a href="{% url 'chapters:chapters' %}">Zacznij naukę</a> od zaraz.</h2>
+  {% else %}
+    <h2>
+      <a href="{% url 'users:register' %}">Zarejestruj konto</a> aby rozpocząć naukę
+      i notować swoje postępy.
+    </h2>
+  {% endif %}
+  <h2>
+    Nauczysz się Pythona od podstaw
+  </h2>
 {% endblock content %}

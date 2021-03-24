@@ -1,47 +1,88 @@
 <!DOCTYPE HTML>
 {% load static %}
+{% load bootstrap3 %}
+{% load bootstrap4 %}
 
 <html lang="pl">
 <head>
     <meta charset="utf-8"/>
-    <title>Aplikacja do nauki Pythona</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/63f4a26a2d.js" crossorigin="anonymous"></script>
+    <title>Aplikacja do nauki Pythona</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
 </head>
 <body>
-  <div id="container">
-      <a href="{% url 'chapters:index' %}"><div id="logo">
-        <div id="logo_napis">Aplikacja do nauki Pythona</div>
-        <div id="logo_foto">
-            <img src="{% static '/img/python.png' %}" height="80px">
-        </div>
-      </div></a>
-    <div id="nav">
-        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Application</div></a>
-        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Pomoc</div></a>
-        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Literatura</div></a>
-        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Aplikacje</div></a>
-        <a class="tile_a" href="{% url 'chapters:index' %}"><div class="tile">Kodowanie</div></a>
-        <a class="tile_a" href="{% url 'chapters:chapters' %}"><div class="tile">Chapters</div></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'chapters:index' %}">Strona główna <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'chapters:index' %}">Application</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'chapters:chapters' %}">Chapters</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'chapters:literatura' %}">Literatura</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'chapters:index' %}">Kodowanie</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'chapters:index' %}">Pomoc</a>
+      </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'users:profile' %}">Hello, {{ user.username }}.</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:logout' %}">Wyloguj się</a>
+      </li>
+        {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:register' %}">Zarejestruj się</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:login' %}">Zaloguj się</a>
+      </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="navigation-class">
+    {% block nav %}{% endblock nav %}
+</div>
+<div class="output">
+    {% block result %}{% endblock result %}
+</div>
+<div class="container">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        {% block header %}{% endblock header %}
     </div>
-    <div id="content">
+    <div>
         {% block content %}{% endblock content %}
     </div>
-    <div id="ad">
-        {% if user.is_authenticated %}
-          Hello, {{ user.username }}.
-        <a href="{% url 'users:logout' %}" class="log_a"><div class="log">Wyloguj się</div></a>
-        {% else %}
-          <a href="{% url 'users:login' %}" class="log_a"><div class="log">Zaloguj się</div></a>
-          <a href="{% url 'users:register' %}" class="log_a"><div class="log">Zarejestruj się</div></a>
-        {% endif %}
-        <img src="{% static '/img/sreklama.jpg' %}"/>
-    </div>
-    <div id="footer">
-        <img src="{% static 'img/logoPWr.png' %}">
-    </div>
+</div>
 
-  </div>
+<div id="footer">
+    <img src="{% static 'img/logoPWr.png' %}">
+</div>
+
+</div>
 </body>
 </html>

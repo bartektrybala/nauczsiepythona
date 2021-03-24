@@ -1,14 +1,36 @@
-{% extends 'chapters/baza.html' %}
+{% extends 'chapters/topic.html' %}
+
+{% block header %}
+  <h2>{{ topic }}</h2>
+{% endblock header %}
+
+{% block nav %}
+<ul class="list-group">
+    {% for topic in topics %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
+            <span class="badge badge-primary badge-pill">7</span>
+     {% endfor %}
+        </li>
+</ul>
+
+{% endblock nav %}
 
 {% block content %}
-  <p>Temat: {{ topic }}</p>
-  <p>Treść tematu:</p>
+
   <p>{{ topic.text|linebreaks }}</p>
   <p>Spróbuj sam:</p>
 
   <form action="{% url 'chapters:approach' topic.id %}" method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button name="submit">Run</button>
+      <button name="submit" class="btn btn-info">Run</button>
   </form>
 {% endblock content %}
+
+{% block result %}
+  <div class="result">
+    <h2>Output: </h2>
+    <h6>{{ res|linebreaks }}</h6>
+  </div>
+{% endblock result %}

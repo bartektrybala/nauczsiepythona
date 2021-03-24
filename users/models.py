@@ -1,3 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+EDUCATION_CHOICES = (
+    ('1', 'Primary School'),
+    ('2', 'High School'),
+    ('3', 'University'),
+    ('4', 'College'),
+    ('5', 'WSRH'),
+)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    education = models.CharField(choices=EDUCATION_CHOICES, max_length=200)
+    age = models.IntegerField()
+    profile_image = models.ImageField(default='media/default-avatar.png', upload_to='users/', null=True, blank=True)
+    points = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username
+
+
+
+
