@@ -32,3 +32,4 @@ class UserApproach(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     user_approach = models.TextField(default='print("Hello World!")')
     points_awarded = models.BooleanField(default=False)
+    points_earned = models.IntegerField(default=0)

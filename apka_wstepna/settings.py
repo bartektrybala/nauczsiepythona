@@ -140,7 +140,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/users/login'
 
 # Settings for django-bootstrap
-BOOTSTRAP3 = {
+BOOTSTRAP4 = {
     'include_jquery': True
 }
 

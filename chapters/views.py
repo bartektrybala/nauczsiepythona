@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Chapter, Topic, UserApproach
 from .forms import TopicForm, ApproachForm
@@ -43,18 +44,24 @@ def approach(request, topic_id):
     except UserApproach.DoesNotExist:
         approach = UserApproach.objects.create(user=request.user, topic=topic)
     res = exec_user_input(approach.user_approach)
-    
+
     if request.method != 'POST':
         form = ApproachForm(instance=approach)
     else:
         form = ApproachForm(instance=approach, data=request.POST)
         user_input = request.POST['user_approach']
         res = exec_user_input(user_input)
+        res_check = ''.join(res.split())
+        topic_check = ''.join(topic.output.split())
         if form.is_valid():
+            if res_check == topic_check:
+                messages.success(request, 'Correct!')
+                if not approach.points_awarded:
+                    approach.points_earned = topic.points
+                    approach.points_awarded = True
             form.save()
             return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
-
-    context = {'topic': topic, 'topics': topics, 'form': form, 'res': res}
+    context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach}
     return render(request, 'chapters/approach.html', context)
 
 

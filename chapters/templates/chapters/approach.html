@@ -1,6 +1,16 @@
 {% extends 'chapters/topic.html' %}
 
 {% block header %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="close"  aria-label="Close">
+        <span aria-hidden="true" data-dismiss="alert">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+{% endif %}
   <h2>{{ topic }}</h2>
 {% endblock header %}
 
@@ -9,7 +19,13 @@
     {% for topic in topics %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
-            <span class="badge badge-primary badge-pill">7</span>
+            <span class="badge badge-primary badge-pill">
+            {% for i in topic.userapproach_set.all %}
+            {% if i.user == request.user and i.points_awarded %}
+                {{ i.points_earned }}
+            {% endif %}
+            {% endfor %}
+             /{{ topic.points }}</span>
      {% endfor %}
         </li>
 </ul>
