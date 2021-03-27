@@ -3,11 +3,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import Chapter, Topic
-from .forms import TopicForm
+from .models import Chapter, Topic, UserApproach
+from .forms import TopicForm, ApproachForm
 from .functions import exec_user_input
 
 import sys
+
 
 def index(request):
     """Home page for application"""
@@ -37,12 +38,17 @@ def approach(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
     chapter = topic.chapter
     topics = chapter.topic_set.all()
-    res = exec_user_input(topic.approach)
+    try:
+        approach = UserApproach.objects.get(user=request.user, topic=topic)
+    except UserApproach.DoesNotExist:
+        approach = UserApproach.objects.create(user=request.user, topic=topic)
+    res = exec_user_input(approach.user_approach)
+    
     if request.method != 'POST':
-        form = TopicForm(instance=topic)
+        form = ApproachForm(instance=approach)
     else:
-        form = TopicForm(instance=topic, data=request.POST)
-        user_input = request.POST['approach']
+        form = ApproachForm(instance=approach, data=request.POST)
+        user_input = request.POST['user_approach']
         res = exec_user_input(user_input)
         if form.is_valid():
             form.save()

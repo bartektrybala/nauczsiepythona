@@ -25,3 +25,10 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class UserApproach(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    user_approach = models.TextField(default='print("Hello World!")')
+    points_awarded = models.BooleanField(default=False)
