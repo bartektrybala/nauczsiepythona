@@ -18,9 +18,10 @@ class Topic(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=200)
     text = models.TextField()
-    approach = models.TextField(default='empty')
+    approach = models.TextField(default='print("Hello World!")')
     points = models.IntegerField(default=3)
     date_added = models.DateTimeField(auto_now_add=True)
+    output = models.TextField(default='Hello World!')
 
     def __str__(self):
         return self.name

@@ -67,12 +67,12 @@
 <div class="navigation-class">
     {% block nav %}{% endblock nav %}
 </div>
-<div class="output">
-    {% block result %}{% endblock result %}
-</div>
 <div class="container">
     <div class="pb-2 mt-4 mb-2 border-bottom">
         {% block header %}{% endblock header %}
+    </div>
+    <div>
+    {% block result %}{% endblock result %}
     </div>
     <div>
         {% block content %}{% endblock content %}
