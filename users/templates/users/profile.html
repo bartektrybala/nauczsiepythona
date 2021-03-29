@@ -9,41 +9,41 @@
 <div class="container bootstrap snippets bootdey">
 
 
-	<div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="100" width="100">
-        </div>
-        <div style="text-align: center; padding-top:10px;">
-        <span class="badge badge-light" style="font-size: 20px;">Points:</span>
-          {% if user.profile.points > 0 %}
-            <span class="badge badge-success" style="font-size: 20px;">{{ user.profile.points }}</span>
-          {% else %}
-            <span class="badge badge-danger" style="font-size: 20px;">{{ user.profile.points }}</span>
-          {% endif %}
-         </div>
-      </div>
-
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fas fa-exclamation-triangle"></i>
-           This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
-        <h3>Personal info</h3>
-
-        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {% bootstrap_form form exclude='password' %}
-          {% bootstrap_form p_form %}
-
-          <button name="submit" class="btn btn-primary">Save</button>
-          <input type="hidden" name="next" value="{% url 'users:profile' %}">
-        </form>
-      </div>
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-3">
+    <div class="text-center">
+      <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="100" width="100">
+    </div>
+    <div style="text-align: center; padding-top:10px;">
+    <span class="badge badge-light" style="font-size: 20px;">Points:</span>
+      {% if user.profile.points > 0 %}
+        <span class="badge badge-success" style="font-size: 20px;">{{ user.profile.points }}</span>
+      {% else %}
+        <span class="badge badge-danger" style="font-size: 20px;">{{ user.profile.points }}</span>
+      {% endif %}
+     </div>
   </div>
+
+  <!-- edit form column -->
+  <div class="col-md-9 personal-info">
+    <div class="alert alert-info alert-dismissable">
+      <a class="panel-close close" data-dismiss="alert">×</a>
+      <i class="fas fa-exclamation-triangle"></i>
+       This is an <strong>.alert</strong>. Use this to show important messages to the user.
+    </div>
+    <h3>Personal info</h3>
+
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form exclude='password' %}
+      {% bootstrap_form p_form %}
+
+      <button name="submit" class="btn btn-primary">Save</button>
+      <input type="hidden" name="next" value="{% url 'users:profile' %}">
+    </form>
+  </div>
+</div>
 </div>
 
 {% endblock content %}

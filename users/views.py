@@ -51,6 +51,5 @@ def profile(request):
     else:
         form = EditUserForm(instance=request.user)
         p_form = EditProfileForm(instance=request.user.profile)
-
     context = {'form': form, 'p_form': p_form}
     return render(request, 'users/profile.html', context)

@@ -63,16 +63,25 @@
     </ul>
   </div>
 </nav>
-
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="close"  aria-label="Close">
+        <span aria-hidden="true" data-dismiss="alert">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+{% endif %}
 <div class="navigation-class">
     {% block nav %}{% endblock nav %}
-</div>
-<div class="output">
-    {% block result %}{% endblock result %}
 </div>
 <div class="container">
     <div class="pb-2 mt-4 mb-2 border-bottom">
         {% block header %}{% endblock header %}
+    </div>
+    <div>
+    {% block result %}{% endblock result %}
     </div>
     <div>
         {% block content %}{% endblock content %}

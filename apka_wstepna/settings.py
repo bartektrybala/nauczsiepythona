@@ -129,7 +129,6 @@ USE_TZ = True
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
 STATIC_URL = 'static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -140,7 +139,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/users/login'
 
 # Settings for django-bootstrap
-BOOTSTRAP3 = {
+BOOTSTRAP4 = {
     'include_jquery': True
 }
 
