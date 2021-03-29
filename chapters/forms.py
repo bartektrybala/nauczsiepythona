@@ -8,4 +8,4 @@ class ApproachForm(forms.ModelForm):
         model = UserApproach
         fields = ['user_approach']
         labels = {'user_approach': ''}
-        widgets = {'user_approach': forms.Textarea(attrs={'cols': 80})}
+        widgets = {'user_approach': forms.Textarea(attrs={'cols': 100})}

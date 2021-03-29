@@ -19,7 +19,14 @@
      {% endfor %}
         </li>
 </ul>
-
+<div style="text-align: center; padding-top:10px;">
+<span class="badge badge-light" style="font-size: 20px;">Points:</span>
+  {% if user.profile.points > 0 %}
+    <span class="badge badge-success" style="font-size: 20px;">{{ user.profile.points }}</span>
+  {% else %}
+    <span class="badge badge-danger" style="font-size: 20px;">{{ user.profile.points }}</span>
+  {% endif %}
+ </div>
 {% endblock nav %}
 
 {% block content %}
@@ -28,10 +35,13 @@
   <p>Spróbuj sam:</p>
 
   <form action="{% url 'chapters:approach' topic.id %}" method="post">
+      <div>
       {% csrf_token %}
       {{ form.as_p }}
+      </div>
       <button name="submit" class="btn btn-info">Run</button>
   </form>
+
 {% endblock content %}
 
 {% block result %}
