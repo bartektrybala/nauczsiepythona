@@ -10,6 +10,7 @@ certifi==2019.11.28
 chardet==3.0.4
 colorama==0.4.1
 cycler==0.10.0
+decision-tree-id3==0.1.2
 decorator==4.4.1
 defusedxml==0.6.0
 dj-database-url==0.5.0
@@ -64,6 +65,7 @@ Pint==0.16.1
 prettytable==0.7.2
 prometheus-client==0.7.1
 prompt-toolkit==2.0.10
+psycopg2==2.8.6
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
 pyee==7.0.4
@@ -78,6 +80,7 @@ pyppeteer==0.2.2
 pyrsistent==0.15.5
 python-dateutil==2.8.0
 pytz==2019.2
+pywin32==226
 pywinpty==0.5.5
 pyzmq==18.1.0
 Quandl==3.5.0
@@ -106,4 +109,4 @@ wcwidth==0.1.7
 webencodings==0.5.1
 websockets==8.1
 zipp==0.6.0
-psycopg2>=2.8.6
+psycopg2>=2.6.1
