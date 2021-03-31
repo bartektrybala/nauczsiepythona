@@ -12,7 +12,7 @@
         <ul class="list-group">
             {% for topic in topics %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
+                <a href="{% url 'chapters:approach' topic.id %}">{{ forloop.counter }}. {{ topic }}</a>
                 <span class="badge badge-primary badge-pill">{{ topic.points }}</span>
             </li>
             {% empty %}

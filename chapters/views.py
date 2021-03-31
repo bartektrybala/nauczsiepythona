@@ -6,7 +6,8 @@ from django.contrib import messages
 
 from .models import Chapter, Topic, UserApproach
 from users.models import Profile
-from .forms import ApproachForm
+
+from .forms import  ApproachForm
 from .functions import exec_user_input
 
 import sys
@@ -51,6 +52,7 @@ def approach(request, topic_id):
     else:
         form = ApproachForm(instance=approach, data=request.POST)
         points_f = Profile.objects.get(user=request.user)
+
         user_input = request.POST['user_approach']
         res = exec_user_input(user_input)
         res_check = ''.join(res.split())
@@ -63,6 +65,9 @@ def approach(request, topic_id):
                     approach.points_earned = topic.points
                     approach.points_awarded = True
                     points_f.save()
+                    approach.points_earned = topic.points
+                    approach.points_awarded = True
+
             form.save()
             return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
     context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach}
