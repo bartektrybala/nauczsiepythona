@@ -16,7 +16,7 @@
                 {{ i.points_earned }}
             {% endif %}
             {% endfor %}
-             /{{ topic.points }}</span>
+                /{{ topic.points }}</span>
      {% endfor %}
         </li>
 </ul>
@@ -33,7 +33,6 @@
 {% block content %}
 
   <p>{{ topic.text|linebreaks }}</p>
-  <p>Spróbuj sam:</p>
 
   <form action="{% url 'chapters:approach' topic.id %}" method="post">
       <div>
@@ -43,7 +42,8 @@
               var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
                     mode: "python",
                     theme: "xq-light",
-                    lineNumbers: true
+                    lineNumbers: true,
+                    autoCloseBrackets: true
                 });
                 editor.setSize("800", "350");
           </script>
@@ -57,6 +57,6 @@
 {% block result %}
   <div class="output">
     <h2>Output: </h2>
-    <h6>{{ res|linebreaks }}</h6>
+    <h6 class="output_a">{{ res|linebreaks }}</h6>
   </div>
 {% endblock result %}

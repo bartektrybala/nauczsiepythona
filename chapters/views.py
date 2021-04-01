@@ -7,7 +7,7 @@ from django.contrib import messages
 from .models import Chapter, Topic, UserApproach
 from users.models import Profile
 
-from .forms import  ApproachForm
+from .forms import ApproachForm
 from .functions import exec_user_input
 
 import sys
@@ -48,28 +48,33 @@ def approach(request, topic_id):
     res = exec_user_input(approach.user_approach)
 
     if request.method != 'POST':
-        form = ApproachForm(instance=approach)
+        if approach.points_awarded:
+            form = ApproachForm(instance=approach)
+        else:
+            approach.user_approach = topic.approach
+            form = ApproachForm(instance=approach)
     else:
         form = ApproachForm(instance=approach, data=request.POST)
         points_f = Profile.objects.get(user=request.user)
 
         user_input = request.POST['user_approach']
         res = exec_user_input(user_input)
-        res_check = ''.join(res.split())
-        topic_check = ''.join(topic.output.split())
-        if form.is_valid():
-            if res_check == topic_check:
-                messages.success(request, 'Correct!')
-                if not approach.points_awarded:
-                    points_f.points += topic.points
-                    approach.points_earned = topic.points
-                    approach.points_awarded = True
-                    points_f.save()
-                    approach.points_earned = topic.points
-                    approach.points_awarded = True
+        if type(res) == str:
+            res_check = ''.join(res.split())
+            topic_check = ''.join(topic.output.split())
+            if form.is_valid():
+                if res_check == topic_check:
+                    messages.success(request, 'Correct!')
+                    if not approach.points_awarded:
+                        points_f.points += topic.points
+                        approach.points_earned = topic.points
+                        approach.points_awarded = True
+                        points_f.save()
+                        approach.points_earned = topic.points
+                        approach.points_awarded = True
 
-            form.save()
-            return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
+                form.save()
+                return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
     context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach}
     return render(request, 'chapters/approach.html', context)
 

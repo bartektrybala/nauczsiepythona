@@ -52,5 +52,11 @@ body
   background-color: lightgrey;
   float: right;
   margin-top: 100px;
-  padding: 50px;
+  padding: 40px;
+  overflow-wrap: break-word;
+  max-width: 250px;
+}
+.output_a
+{
+  font-family: Consolas,monaco,monospace;
 }
