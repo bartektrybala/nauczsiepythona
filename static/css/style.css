@@ -1,6 +1,6 @@
 body
 {
-  background-image: url("/static/img/tlo.png");
+  background-image: url("../img/tlo.png");
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
 }

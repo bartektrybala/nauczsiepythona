@@ -15,7 +15,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     education = models.CharField(choices=EDUCATION_CHOICES, max_length=200)
     age = models.IntegerField()
-    profile_image = models.ImageField(default='media/default-avatar.png', upload_to='users/', null=True, blank=True)
+    profile_image = models.ImageField(default='default-avatar.png', upload_to='users/', null=True, blank=True)
     points = models.IntegerField(default=0)
 
     def __str__(self):

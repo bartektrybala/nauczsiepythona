@@ -8,15 +8,21 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/63f4a26a2d.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+    <link href="{% static 'codemirror/lib/codemirror.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'codemirror/mode/python/python.js' %}"></script>
+
+    <link href="{% static 'codemirror/theme/xq-light.css' %}" rel="stylesheet">
+
     <title>Aplikacja do nauki Pythona</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
 </head>
-<body>
+<body style="background-image: url('{% static 'img/tlo.png' %}');">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
