@@ -30,6 +30,9 @@ body
   width: 500px;
   font-size: 20px;
   text-decoration: none;
+  border: 1 px solid #000;
+  height: 500px;
+  overflow-y:auto;
 }
 .ikonka-python
 {
@@ -54,9 +57,15 @@ body
   margin-top: 100px;
   padding: 40px;
   overflow-wrap: break-word;
-  max-width: 250px;
+  max-width: 350px;
 }
 .output_a
 {
   font-family: Consolas,monaco,monospace;
+}
+.topic_scroll
+{
+  max-height: 400px;
+  width: 18%;
+  overflow: auto;
 }

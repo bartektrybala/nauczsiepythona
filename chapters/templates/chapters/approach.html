@@ -6,20 +6,22 @@
 {% endblock header %}
 
 {% block nav %}
-<ul class="list-group">
-    {% for topic in topics %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
-            <span class="badge badge-primary badge-pill">
-            {% for i in topic.userapproach_set.all %}
-            {% if i.user == request.user and i.points_awarded %}
-                {{ i.points_earned }}
-            {% endif %}
-            {% endfor %}
-                /{{ topic.points }}</span>
-     {% endfor %}
-        </li>
-</ul>
+<div style="height: 500px; overflow-y:auto;">
+    <ul class="list-group" style="max-height: 500px; overflow: auto;">
+        {% for topic in topics %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
+                <span class="badge badge-primary badge-pill ml-2">
+                {% for i in topic.userapproach_set.all %}
+                {% if i.user == request.user and i.points_awarded %}
+                    {{ i.points_earned }}
+                {% endif %}
+                {% endfor %}
+                    /{{ topic.points }}</span>
+         {% endfor %}
+            </li>
+    </ul>
+</div>
 <div style="text-align: center; padding-top:10px;">
 <span class="badge badge-light" style="font-size: 20px;">Points:</span>
   {% if user.profile.points > 0 %}
@@ -33,7 +35,7 @@
 {% block content %}
 
   <p>{{ topic.text|linebreaks }}</p>
-
+  <div>
   <form action="{% url 'chapters:approach' topic.id %}" method="post">
       <div>
       {% csrf_token %}
@@ -49,9 +51,14 @@
           </script>
       </div>
 
-      <button name="submit" class="btn btn-info">Run</button>
+      <button name="submit" class="btn btn-info float-left">Uruchom</button>
   </form>
-
+    {% if approach.points_awarded %}
+        <a href="{% url 'chapters:approach' next_topic_id %}">
+            <button class="btn btn-warning float-left ml-1" >Następny temat</button>
+        </a>
+    {% endif %}
+  </div>
 {% endblock content %}
 
 {% block result %}

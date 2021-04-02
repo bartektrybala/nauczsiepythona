@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+
 from .models import Chapter, Topic, UserApproach
 from users.models import Profile
 
@@ -75,7 +76,8 @@ def approach(request, topic_id):
 
                 form.save()
                 return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
-    context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach}
+    context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach,
+               'next_topic_id': topic_id+1}
     return render(request, 'chapters/approach.html', context)
 
 

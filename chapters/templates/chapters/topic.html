@@ -9,11 +9,18 @@
 {% block content %}
 <div>
     <div class="lista-tematow">
-        <ul class="list-group">
+        <ul class="topics_scroll">
             {% for topic in topics %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="{% url 'chapters:approach' topic.id %}">{{ forloop.counter }}. {{ topic }}</a>
-                <span class="badge badge-primary badge-pill">{{ topic.points }}</span>
+                <span class="badge badge-primary badge-pill">
+                {% for i in topic.userapproach_set.all %}
+                    {% if i.user == request.user and i.points_awarded %}
+                        {{ i.points_earned }}
+                    {% endif %}
+                {% endfor %}
+                /{{ topic.points }}
+                </span>
             </li>
             {% empty %}
               <li>No topics have been added yet.</li>
