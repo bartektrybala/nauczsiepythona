@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.template import Library
 
 
 from .models import Chapter, Topic, UserApproach
@@ -42,6 +43,11 @@ def approach(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
     chapter = topic.chapter
     topics = chapter.topic_set.all()
+    last_topic = Topic.objects.last()
+    if topic_id == last_topic.id:
+        next_topic_id = 1
+    else:
+        next_topic_id = topic_id+1
     try:
         approach = UserApproach.objects.get(user=request.user, topic=topic)
     except UserApproach.DoesNotExist:
@@ -77,7 +83,7 @@ def approach(request, topic_id):
                 form.save()
                 return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
     context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach,
-               'next_topic_id': topic_id+1}
+               'next_topic_id': next_topic_id}
     return render(request, 'chapters/approach.html', context)
 
 

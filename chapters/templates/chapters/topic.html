@@ -1,5 +1,6 @@
 {% extends "chapters/baza.html" %}
 {% load static %}
+{% load  chapters_extras %}
 
 {% block header %}
   <h2>{{ chapter }}: </h2>
@@ -14,12 +15,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="{% url 'chapters:approach' topic.id %}">{{ forloop.counter }}. {{ topic }}</a>
                 <span class="badge badge-primary badge-pill">
-                {% for i in topic.userapproach_set.all %}
-                    {% if i.user == request.user and i.points_awarded %}
-                        {{ i.points_earned }}
-                    {% endif %}
-                {% endfor %}
-                /{{ topic.points }}
+                {% get_topic_points_tag topic user %} / {{ topic.points }}
                 </span>
             </li>
             {% empty %}
