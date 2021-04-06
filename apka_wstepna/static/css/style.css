@@ -1,0 +1,71 @@
+body
+{
+  background-image: url("../img/tlo.png");
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+}
+#container
+{
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content
+{
+  float: left;
+  padding: 20px;
+  width: 800px;
+}
+#footer
+{
+  clear: both;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+.lista-tematow
+{
+  float: left;
+  width: 500px;
+  font-size: 20px;
+  text-decoration: none;
+  border: 1 px solid #000;
+  height: 500px;
+  overflow-y:auto;
+}
+.ikonka-python
+{
+  float: left;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+.navigation-class
+{
+  float: left;
+  margin-top: 100px;
+  margin-right: 20px;
+}
+.result
+{
+  float: left;
+}
+.output
+{
+  background-color: lightgrey;
+  float: right;
+  margin-top: 100px;
+  padding: 40px;
+  overflow-wrap: break-word;
+  max-width: 350px;
+}
+.output_a
+{
+  font-family: Consolas,monaco,monospace;
+}
+.topic_scroll
+{
+  max-height: 400px;
+  width: 18%;
+  overflow: auto;
+}
