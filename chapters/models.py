@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from next_prev import next_in_order, prev_in_order
 
 
 class Chapter(models.Model):
