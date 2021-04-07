@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 from .models import Chapter, Topic, UserApproach
@@ -11,12 +12,14 @@ from users.models import Profile
 from .forms import ApproachForm
 from .functions import exec_user_input
 
-import sys
+import operator
 
 
 def index(request):
-    """Home page for application"""
-    return render(request, 'chapters/index.html')
+    u = User.objects.all()
+    users = sorted(u, key=operator.attrgetter('profile.points'), reverse=True)
+    context = {'users': users}
+    return render(request, 'chapters/index.html', context)
 
 
 @login_required

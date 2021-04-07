@@ -18,4 +18,31 @@
   <h2>
     Nauczysz się Pythona od podstaw
   </h2>
+
+<div class="container_index">
+  <div class="wrapper">
+  <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>Points</th>
+          <th>Education</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for user in users %}
+        <tr>
+          <td class="rank">{{ forloop.counter }}.</td>
+          <td class="team">
+            <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="25" width="25">
+             {{ user.username }}</td>
+          <td class="points">{{ user.profile.points }}</td>
+          <td class="points">{{ user.profile.get_education_display }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+  </div>
+</div>
 {% endblock content %}

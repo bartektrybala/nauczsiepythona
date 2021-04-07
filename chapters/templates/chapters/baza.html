@@ -15,6 +15,7 @@
     <link href="{% static 'codemirror/lib/codemirror.css' %}" rel="stylesheet">
     <script src="{% static 'codemirror/mode/python/python.js' %}"></script>
     <script src="{% static 'codemirror/addon/edit/closebrackets.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
     <link href="{% static 'codemirror/theme/xq-light.css' %}" rel="stylesheet">
 
@@ -23,53 +24,8 @@
     {% bootstrap_javascript %}
 
 </head>
-<body style="background-image: url('{% static 'img/tlo.png' %}');">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Strona główna <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Application</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:chapters' %}">Chapters</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:literatura' %}">Literatura</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Kodowanie</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Pomoc</a>
-      </li>
-    </ul>
-    <ul class="nav justify-content-end">
-        {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link " href="{% url 'users:profile' %}">Hello, {{ user.username }}.</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'users:logout' %}">Wyloguj się</a>
-      </li>
-        {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'users:register' %}">Zarejestruj się</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'users:login' %}">Zaloguj się</a>
-      </li>
-        {% endif %}
-    </ul>
-  </div>
-</nav>
+<body>
+{% include "chapters/navbar.html" %}
 {% if messages %}
     {% for message in messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -96,7 +52,6 @@
 </div>
 
 <div id="footer">
-    <img src="{% static 'img/logoPWr.png' %}">
 </div>
 
 </div>
