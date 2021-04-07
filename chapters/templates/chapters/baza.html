@@ -11,13 +11,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/63f4a26a2d.js" crossorigin="anonymous"></script>
+
+
+    <!-- Code Mirror -->
     <script type="text/javascript" src="{% static 'codemirror/lib/codemirror.js' %}"></script>
     <link href="{% static 'codemirror/lib/codemirror.css' %}" rel="stylesheet">
     <script src="{% static 'codemirror/mode/python/python.js' %}"></script>
     <script src="{% static 'codemirror/addon/edit/closebrackets.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-
     <link href="{% static 'codemirror/theme/xq-light.css' %}" rel="stylesheet">
+
+    <!-- Night Mode-->
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+      function addDarkmodeWidget() {
+        new Darkmode().showWidget();
+      }
+      window.addEventListener('load', addDarkmodeWidget);
+    </script>
 
     <title>Aplikacja do nauki Pythona</title>
     {% bootstrap_css %}
