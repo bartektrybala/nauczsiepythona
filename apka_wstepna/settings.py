@@ -147,9 +147,6 @@ BOOTSTRAP4 = {
     'include_jquery': True
 }
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Heroku settings
 if os.getcwd() == '/app':
@@ -164,7 +161,12 @@ if os.getcwd() == '/app':
     ALLOWED_HOSTS = ['*']
 
     # Static asset configuration
-    STATIC_URL = '/static/'
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, '/static'),
     )
+
+
