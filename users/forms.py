@@ -9,7 +9,6 @@ EDUCATION_CHOICES = (
     ('2', 'High School'),
     ('3', 'University'),
     ('4', 'College'),
-    ('5', 'WSRH')
 )
 
 
