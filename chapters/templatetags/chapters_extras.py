@@ -11,3 +11,4 @@ def get_chapter_points_tag(chapter, user):
 @register.simple_tag
 def get_topic_points_tag(topic, user):
     return topic.user_topic_points(user)
+

@@ -8,7 +8,12 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    <h2><a href="{% url 'chapters:chapters' %}">Zacznij naukę</a> od zaraz.</h2>
+    {% if user.points > 0 %}
+      <h2><a href="{% url 'chapters:approach' 1 %}">Zacznij naukę</a> od zaraz.</h2>
+    {% else %}
+      <h2><a href="{% url 'chapters:approach' 1 %}">Kontynuuj naukę</a></h2>
+    {% endif %}
+
   {% else %}
     <h2>
       <a href="{% url 'users:register' %}">Zarejestruj konto</a> aby rozpocząć naukę
