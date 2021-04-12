@@ -8,16 +8,20 @@
 
 {% block nav %}
 <div style="height: 500px; overflow-y:auto;">
-    <ul class="list-group" style="max-height: 500px; overflow: auto;">
+    <table style="max-height: 500px; overflow: auto;">
+      <tbody>
         {% for topic in topics %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="{% url 'chapters:approach' topic.id %}">{{ topic }}</a>
-                <span class="badge badge-primary badge-pill ml-2">
+        <tr>
+            <td class="team">
+                <a href="{% url 'chapters:approach' topic.id %}">{{ forloop.counter }}. {{ topic }}</a>
+                <span class="badge badge-primary badge-pill ml-2 float-right">
                 {% get_topic_points_tag topic user %}
                     /{{ topic.points }}</span>
-         {% endfor %}
-            </li>
-    </ul>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 </div>
 <div style="text-align: center; padding-top:10px;">
 <span class="badge badge-light" style="font-size: 20px;">Points:</span>
@@ -40,11 +44,12 @@
         <script>
               var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
                     mode: "python",
-                    theme: "xq-light",
+                    theme: "night",
                     lineNumbers: true,
-                    autoCloseBrackets: true
+                    autoCloseBrackets: true,
+                    lineWrapping: true
                 });
-                editor.setSize("800", "350");
+                editor.setSize("auto", "350");
           </script>
       </div>
 
@@ -59,8 +64,8 @@
 {% endblock content %}
 
 {% block result %}
-  <div class="output">
-    <h2>Output: </h2>
-    <h6 class="output_a">{{ res|linebreaks }}</h6>
-  </div>
+<div class="output">
+    <h1>Output: </h1>
+    <h5 class="output_a">{{ res|linebreaks }}</h5>
+</div>
 {% endblock result %}

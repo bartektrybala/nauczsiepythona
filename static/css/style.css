@@ -43,7 +43,8 @@ body
 .navigation-class
 {
   float: left;
-  margin-top: 100px;
+  width: 25%;
+  height: 500px;
   margin-right: 20px;
 }
 .result
@@ -52,10 +53,9 @@ body
 }
 .output
 {
-  background-color: lightgrey;
   float: right;
-  margin-top: 100px;
-  padding: 40px;
+  margin-top: 150px;
+  margin-right: 50px;
   overflow-wrap: break-word;
   max-width: 350px;
 }
@@ -118,4 +118,15 @@ tbody tr:hover {
 
 td.rank {
 	text-transform: capitalize;
+}
+#my_container
+{
+    margin: auto;
+    width: 50%px;
+    text-align: center;
+ }
+#content_div
+{
+    float: left;
+    width: 50%;
 }

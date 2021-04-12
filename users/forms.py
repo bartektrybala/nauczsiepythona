@@ -34,4 +34,3 @@ class EditProfileForm(forms.ModelForm):
         fields = ['age', 'education', 'profile_image']
 
 
-
