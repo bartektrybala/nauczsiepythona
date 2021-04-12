@@ -8,10 +8,10 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    {% if user.points > 0 %}
+    {% if user.profile.points == 0 %}
       <h2><a href="{% url 'chapters:approach' 1 %}">Zacznij naukę</a> od zaraz.</h2>
     {% else %}
-      <h2><a href="{% url 'chapters:approach' 1 %}">Kontynuuj naukę</a></h2>
+      <h2><a href="{% url 'chapters:approach' last_topic_id %}">Kontynuuj naukę</a></h2>
     {% endif %}
 
   {% else %}
@@ -37,7 +37,8 @@
       </thead>
       <tbody>
       {% for user in users %}
-        <tr>
+        {% if user == request.user %}
+          <tr style="background-color: orange">
           <td class="rank">{{ forloop.counter }}.</td>
           <td class="team">
             <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="25" width="25">
@@ -45,6 +46,16 @@
           <td class="points">{{ user.profile.points }}</td>
           <td class="points">{{ user.profile.get_education_display }}</td>
         </tr>
+        {% else %}
+          <tr>
+          <td class="rank">{{ forloop.counter }}.</td>
+          <td class="team">
+            <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="25" width="25">
+             {{ user.username }}</td>
+          <td class="points">{{ user.profile.points }}</td>
+          <td class="points">{{ user.profile.get_education_display }}</td>
+        </tr>
+        {% endif %}
       {% endfor %}
       </tbody>
   </table>

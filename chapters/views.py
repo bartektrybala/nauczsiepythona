@@ -15,10 +15,30 @@ from .functions import exec_user_input
 import operator
 
 
+# Funkcja do "Kontunuuj naaukę"
+def last_topic(approaches):
+    topics = Topic.objects.all()
+    last_topic_id = 1
+    for topic in topics:
+        for approach in approaches:
+            if topic == approach.topic:
+                if approach.points_awarded:
+                    continue
+                else:
+                    last_topic_id = topic.id
+                    break
+    return last_topic_id
+
+
 def index(request):
     u = User.objects.all()
     users = sorted(u, key=operator.attrgetter('profile.points'), reverse=True)
-    context = {'users': users}
+    if request.user.is_authenticated:
+        approaches = UserApproach.objects.filter(user=request.user)
+        last_topic_id = last_topic(approaches)
+    else:
+        last_topic_id = 1
+    context = {'users': users, 'last_topic_id': last_topic_id}
     return render(request, 'chapters/index.html', context)
 
 
@@ -50,6 +70,7 @@ def approach(request, topic_id):
         next_topic_id = 1
     else:
         next_topic_id = topic_id+1
+
     try:
         approach = UserApproach.objects.get(user=request.user, topic=topic)
     except UserApproach.DoesNotExist:
