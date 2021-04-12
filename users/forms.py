@@ -25,6 +25,7 @@ class UserRegisterForm(UserCreationForm):
 class EditUserForm(UserChangeForm):
     class Meta:
         model = User
+        exclude = ['password']
         fields = ['first_name', 'last_name', 'email']
 
 

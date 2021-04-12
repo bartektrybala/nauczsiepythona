@@ -17,16 +17,10 @@ import operator
 
 # Funkcja do "Kontunuuj naaukę"
 def last_topic(approaches):
-    topics = Topic.objects.all()
     last_topic_id = 1
-    for topic in topics:
-        for approach in approaches:
-            if topic == approach.topic:
-                if approach.points_awarded:
-                    continue
-                else:
-                    last_topic_id = topic.id
-                    break
+    last_approach = approaches[-1]
+    if last_approach and last_approach.points_earned:
+        last_topic_id = last_approach.topic.id
     return last_topic_id
 
 
@@ -35,6 +29,7 @@ def index(request):
     users = sorted(u, key=operator.attrgetter('profile.points'), reverse=True)
     if request.user.is_authenticated:
         approaches = UserApproach.objects.filter(user=request.user)
+        approaches = sorted(approaches, key=operator.attrgetter('topic.id'))
         last_topic_id = last_topic(approaches)
     else:
         last_topic_id = 1
