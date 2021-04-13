@@ -30,7 +30,10 @@ def index(request):
     if request.user.is_authenticated:
         approaches = UserApproach.objects.filter(user=request.user)
         approaches = sorted(approaches, key=operator.attrgetter('topic.id'))
-        last_topic_id = last_topic(approaches)
+        if len(approaches) > 0:
+            last_topic_id = last_topic(approaches)
+        else:
+            last_topic_id = 1
     else:
         last_topic_id = 1
     context = {'users': users, 'last_topic_id': last_topic_id}
