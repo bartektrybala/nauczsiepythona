@@ -65,7 +65,13 @@
 
 {% block result %}
 <div class="output">
-    <h1>Output: </h1>
-    <h5 class="output_a">{{ res|linebreaks }}</h5>
+    <div class="console">
+  <header>
+    <p>Terminal</p>
+  </header>
+  <div class="consolebody">
+    <p >{{ res|linebreaks }}</p>
+  </div>
+</div>
 </div>
 {% endblock result %}

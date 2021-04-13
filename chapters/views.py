@@ -6,10 +6,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 
-from .models import Chapter, Topic, UserApproach
+from .models import Chapter, Topic, UserApproach, Code
 from users.models import Profile
 
-from .forms import ApproachForm
+from .forms import ApproachForm, UserCode
 from .functions import exec_user_input
 
 import operator
@@ -17,10 +17,8 @@ import operator
 
 # Funkcja do "Kontunuuj naaukę"
 def last_topic(approaches):
-    last_topic_id = 1
     last_approach = approaches[-1]
-    if last_approach and last_approach.points_earned:
-        last_topic_id = last_approach.topic.id
+    last_topic_id = last_approach.topic.id
     return last_topic_id
 
 
@@ -111,4 +109,29 @@ def approach(request, topic_id):
 def literatura(request):
     """Information about books."""
     return render(request, 'chapters/literatura.html')
+
+
+@login_required
+def kodowanie(request):
+    """Code mirror for user"""
+    try:
+        code = Code.objects.get(user=request.user)
+    except Code.DoesNotExist:
+        code = Code.objects.create(user=request.user)
+    res = exec_user_input(code.test_code)
+
+    if request.method != 'POST':
+        form = UserCode(instance=code)
+    else:
+        form = UserCode(instance=code, data=request.POST)
+        code_input = request.POST['test_code']
+        res = exec_user_input(code_input)
+        if form.is_valid():
+            new_code = form.save(commit=False)
+            new_code.user = request.user
+            new_code.save()
+            return HttpResponseRedirect(reverse('chapters:kodowanie'))
+
+    context = {'form': form, 'res': res}
+    return render(request, 'chapters/kodowanie.html', context)
 

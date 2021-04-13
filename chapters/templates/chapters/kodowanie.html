@@ -1,0 +1,44 @@
+{% extends 'chapters/baza.html' %}
+
+
+{% block header %}
+  <h1>Code Mirror</h1>
+{% endblock header %}
+
+
+{% block content %}
+<br><br><br><br><br><br>
+<div>
+<form action="{% url 'chapters:kodowanie' %}" method="post">
+      <div>
+      {% csrf_token %}
+      {{ form.as_p }}
+        <script>
+              var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                    mode: "python",
+                    theme: "base16-dark",
+                    lineNumbers: true,
+                    autoCloseBrackets: true,
+                    lineWrapping: true
+                });
+                editor.setSize("auto", "350");
+          </script>
+      </div>
+
+      <button name="submit" class="btn btn-info float-left">Uruchom</button>
+  </form>
+</div>
+{% endblock content %}
+
+{% block result %}
+<div class="output">
+    <div class="console">
+  <header>
+    <p>Terminal</p>
+  </header>
+  <div class="consolebody">
+    <p >{{ res|linebreaks }}</p>
+  </div>
+</div>
+</div>
+{% endblock result %}

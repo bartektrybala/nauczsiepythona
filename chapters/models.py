@@ -58,3 +58,8 @@ class UserApproach(models.Model):
     user_approach = models.TextField(default='')
     points_awarded = models.BooleanField(default=False)
     points_earned = models.IntegerField(default=0)
+
+
+class Code(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test_code = models.TextField(default='print("Hello World!")')

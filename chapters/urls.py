@@ -12,6 +12,9 @@ urlpatterns = [
     # Literatura
     path('literatura/', views.literatura, name='literatura'),
 
+    # Kodowanie
+    path('kodowanie', views.kodowanie, name='kodowanie'),
+
     # Show all chapters and topics
     path('chapters/', views.chapters, name='chapters'),
     path('chapters/<int:chapter_id>/', views.topic, name='topic'),

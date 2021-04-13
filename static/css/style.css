@@ -51,18 +51,7 @@ body
 {
   float: left;
 }
-.output
-{
-  float: right;
-  margin-top: 150px;
-  margin-right: 50px;
-  overflow-wrap: break-word;
-  max-width: 350px;
-}
-.output_a
-{
-  font-family: Consolas,monaco,monospace;
-}
+
 .topic_scroll
 {
   max-height: 400px;
@@ -129,4 +118,48 @@ td.rank {
 {
     float: left;
     width: 50%;
+}
+
+
+.output
+{
+  float: right;
+  margin-top: 150px;
+  margin-right: 50px;
+  overflow-wrap: break-word;
+  max-width: 350px;
+}
+
+.console {
+  float: right;
+  font-family: Consolas,monaco,monospace;
+  width: max-content;
+  height: 450px;
+  box-sizing: border-box;
+  margin: auto;
+  width: 350px;
+
+}
+.console header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #555;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: #DDD;
+}
+.console .consolebody {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: calc(100% - 40px);
+  background-color: #fff;
+  color: purple;
+  font-weight: bold;
+  overflow: auto;
+}
+.console .consolebody p {
+  line-height: 1.5rem;
 }
