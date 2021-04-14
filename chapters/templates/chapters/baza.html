@@ -50,19 +50,22 @@
 <div class="pb-2 mt-4 mb-2 border-bottom margin-auto mx-auto w-50">
     {% block header %}{% endblock header %}
 </div>
-<div class="navigation-class">
-{% block nav %}{% endblock nav %}
-</div>
-<div id="content_div">
-    {% block content %}{% endblock content %}
-</div>
+<div class="container_base">
+    <div class="navigation-class">
+    {% block nav %}{% endblock nav %}
+    </div>
 
-    {% block result %}{% endblock result %}
+    <div class="content_div">
+        {% block content %}{% endblock content %}
+    </div>
 
+    <div class="result_div">
+        {% block result %}{% endblock result %}
+    </div>
+</div>
 
 <div id="footer">
 </div>
 
-</div>
 </body>
 </html>
