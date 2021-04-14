@@ -4,13 +4,11 @@ body
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
 }
-#container
+.container_base
 {
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+    display: flex;
+    justify-content: space-between;
 }
-
 #content
 {
   float: left;
@@ -34,18 +32,30 @@ body
   height: 500px;
   overflow-y:auto;
 }
-.ikonka-python
-{
-  float: left;
-  margin-left: 100px;
-  margin-top: 100px;
-}
 .navigation-class
 {
   float: left;
   width: 25%;
   height: 500px;
-  margin-right: 20px;
+}
+.content_div
+{
+    float: left;
+    width: 50%;
+    min-height: 600px;
+}
+.result_div
+{
+  float: left;
+  width: 25%;
+  height: 500px;
+}
+
+.navigation-class_kod
+{
+  float: left;
+  width: 15%;
+  height: 500px;
 }
 .result
 {
@@ -114,11 +124,6 @@ td.rank {
     width: 50%px;
     text-align: center;
  }
-#content_div
-{
-    float: left;
-    width: 50%;
-}
 
 
 .output
@@ -130,8 +135,10 @@ td.rank {
   max-width: 350px;
 }
 
+
+
 .console {
-  float: right;
+  float: left;
   font-family: Consolas,monaco,monospace;
   width: max-content;
   height: 450px;

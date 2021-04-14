@@ -6,8 +6,8 @@
 {% endblock header %}
 
 
+
 {% block content %}
-<br><br><br><br><br><br>
 <div>
 <form action="{% url 'chapters:kodowanie' %}" method="post">
       <div>
@@ -28,17 +28,16 @@
       <button name="submit" class="btn btn-info float-left">Uruchom</button>
   </form>
 </div>
+
 {% endblock content %}
 
 {% block result %}
-<div class="output">
-    <div class="console">
+<div class="console">
   <header>
     <p>Terminal</p>
   </header>
   <div class="consolebody">
     <p >{{ res|linebreaks }}</p>
   </div>
-</div>
 </div>
 {% endblock result %}
