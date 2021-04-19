@@ -1,0 +1,23 @@
+{% extends 'chapters/baza.html' %}
+{% block content %}
+<textarea id="code_pomoc">
+    # Listy
+    A = [1, 2, 33, 42, 51,'pirat', 'klawiatura', 16, 7, 8]
+    A.append('6')   # dodaj element
+    A.insert(2, '7')    # wstawianie elementu
+    A.pop()         # usuń ostatni element
+    A.remove('pirat')         # usuwnaie podanego elementu
+    del A[0]            # usuwanie elementu po indeksie
+</textarea>
+    <script>
+          var editor = CodeMirror.fromTextArea(document.getElementById('code_pomoc'), {
+                mode: "python",
+                theme: "base16-dark",
+                lineNumbers: true,
+                autoCloseBrackets: true,
+                lineWrapping: true
+            });
+            editor.setSize("auto", "auto");
+      </script>
+
+{% endblock content %}

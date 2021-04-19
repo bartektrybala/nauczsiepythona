@@ -13,7 +13,10 @@ urlpatterns = [
     path('literatura/', views.literatura, name='literatura'),
 
     # Kodowanie
-    path('kodowanie', views.kodowanie, name='kodowanie'),
+    path('kodowanie/', views.kodowanie, name='kodowanie'),
+
+    # Pomoc
+    path('pomoc/', views.pomoc, name='pomoc'),
 
     # Show all chapters and topics
     path('chapters/', views.chapters, name='chapters'),

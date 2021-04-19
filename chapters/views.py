@@ -111,6 +111,10 @@ def literatura(request):
     return render(request, 'chapters/literatura.html')
 
 
+def pomoc(request):
+    """Information about books."""
+    return render(request, 'chapters/pomoc.html')
+
 @login_required
 def kodowanie(request):
     """Code mirror for user"""
