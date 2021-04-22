@@ -23,15 +23,38 @@ class UserRegisterForm(UserCreationForm):
 
 
 class EditUserForm(UserChangeForm):
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={'type': 'text',
+               'class': 'form-control',
+               'id': 'inputFirstname'}))
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={'type': 'text',
+               'class': 'form-control',
+               'id': 'inputLastname'}))
+    email = forms.CharField(widget=forms.TextInput(
+        attrs={'type': 'text',
+               'class': 'form-control',
+               'id': 'inputEmail'}))
+
     class Meta:
         model = User
-        exclude = ['password']
         fields = ['first_name', 'last_name', 'email']
 
 
 class EditProfileForm(forms.ModelForm):
+    age = forms.CharField(widget=forms.NumberInput(
+        attrs={'type': 'text',
+               'class': 'form-control',
+               'id': 'inputAge'}))
+    education = forms.ChoiceField(choices=EDUCATION_CHOICES, widget=forms.Select(
+        attrs={'class': 'form-control',
+               'id': 'inputEducation'}))
+    profile_image = forms.ImageField()
+
     class Meta:
         model = Profile
+        exclude = ('password',)
         fields = ['age', 'education', 'profile_image']
+
 
 
