@@ -3,9 +3,8 @@ import subprocess
 
 def exec_user_input(user_input):
     # encode the code
-    f = open('file.py', 'w', newline='')
+    f = open('file.py', 'w', newline='', encoding='utf-8')
     f.truncate(0)
-    f.write('# -*- coding: utf-8 -*-\n')
     f.write(user_input)
     f.close()
 
