@@ -1,6 +1,10 @@
+body.darkmode--activated {
+  background-color: red;
+}
+
 body
 {
-  background-image: url("../img/tlo.png");
+  background-color: coral;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
 }

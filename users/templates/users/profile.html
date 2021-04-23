@@ -17,13 +17,17 @@
       <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="100" width="100">
     </div>
     <div style="text-align: center; padding-top:10px;">
-    <span class="badge badge-light" style="font-size: 20px;">Points:</span>
+    <span class="badge badge-light text-dark" style="font-size: 20px;">Points:</span>
       {% if user.profile.points > 0 %}
         <span class="badge badge-success" style="font-size: 20px;">{{ user.profile.points }}</span>
       {% else %}
         <span class="badge badge-danger" style="font-size: 20px;">{{ user.profile.points }}</span>
       {% endif %}
      </div>
+      <div class="form-group w-25 ">
+          {{ p_form.profile_image }}
+      </div>
+
   </div>
 
   <!-- edit form column -->
@@ -33,41 +37,36 @@
       <i class="fas fa-exclamation-triangle"></i>
         <strong>Pamiętaj</strong> aby zapisać zmiany.
     </div>
-    <h3>Personal info</h3>
+    <h3 class="text-dark">Personal info</h3>
 
     <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="clearfix d-flex justify-content-center">
         <div class="form-group mr-2 align-self-center w-100">
-        <label for="inputFirstname">First name</label>
+        <label for="inputFirstname" class="text-dark">First name</label>
             {{ form.first_name }}
         </div>
         <div class="form-group ml-2 align-self-center w-100">
-        <label for="inputLastname">Last name</label>
+        <label for="inputLastname" class="text-dark">Last name</label>
             {{ form.last_name }}
         </div>
       </div>
       <div class="clearfix d-flex justify-content-center">
           <div class="form-group w-75 mr-2">
-          <label for="inputEmail">Email</label>
+          <label for="inputEmail" class="text-dark">Email</label>
               {{ form.email }}
           </div>
           <div class="form-group w-25 ml-2">
-          <label for="inputAge">Age</label>
+          <label for="inputAge" class="text-dark">Age</label>
               {{ p_form.age }}
           </div>
       </div>
-      <div class="clearfix d-flex justify-content-center">
-        <div class="form-group w-75 mr-2">
-        <label for="inputEducation">Education</label>
+        <div class="form-group w-75">
+        <label for="inputEducation" class="text-dark">Education</label>
             {{ p_form.education }}
         </div>
-        <div class="form-group w-25 ml-2">
-            {{ p_form.profile_image }}
-        </div>
-      </div>
-      <button name="submit" class="btn btn-primary">Save</button>
-      <input type="hidden" name="next" value="{% url 'users:profile' %}">
+          <button name="submit" class="btn btn-primary mr-2">Save</button>
+          <input type="hidden" name="next" value="{% url 'users:profile' %}">
     </form>
   </div>
 </div>

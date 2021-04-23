@@ -25,15 +25,15 @@ class UserRegisterForm(UserCreationForm):
 class EditUserForm(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control',
+               'class': 'form-control bg-light text-dark',
                'id': 'inputFirstname'}))
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control',
+               'class': 'form-control bg-light text-dark',
                'id': 'inputLastname'}))
     email = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control',
+               'class': 'form-control bg-light text-dark',
                'id': 'inputEmail'}))
 
     class Meta:
@@ -44,10 +44,10 @@ class EditUserForm(UserChangeForm):
 class EditProfileForm(forms.ModelForm):
     age = forms.CharField(widget=forms.NumberInput(
         attrs={'type': 'text',
-               'class': 'form-control',
+               'class': 'form-control bg-light text-dark',
                'id': 'inputAge'}))
     education = forms.ChoiceField(choices=EDUCATION_CHOICES, widget=forms.Select(
-        attrs={'class': 'form-control',
+        attrs={'class': 'form-control bg-light text-dark',
                'id': 'inputEducation'}))
     profile_image = forms.ImageField()
 
