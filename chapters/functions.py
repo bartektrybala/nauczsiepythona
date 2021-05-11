@@ -15,6 +15,16 @@ def exec_user_input(user_input):
         str_output = str(e.output)
         return str_output.replace('file.py', 'Code Mirror')
     return result
+
+
+
+
+
+
+
+
+
+
 '''
 import sys
 from io import StringIO

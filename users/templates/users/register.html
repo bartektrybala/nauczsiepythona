@@ -2,10 +2,50 @@
 {% load bootstrap3 %}
 
 {% block content %}
-  <form method="post" action="{% url 'users:register' %}">
+  <form method="post" action="{% url 'users:register' %}" enctype="multipart/form-data" class="form-horizontal" role="form">
       {% csrf_token %}
-      {% bootstrap_form form %}
+      <div class="form-group align-self-center w-100">
+            <label for="inputUsername" >Username *</label>
+            {{ form.username }}
+      </div>
+      <div class="clearfix d-flex justify-content-center">
+          <div class="form-group mr-2 align-self-center w-100">
+            <label for="inputPassword1" >Password *</label>
+            {{ form.password1 }}
+          </div>
+          <div class="form-group ml-2 align-self-center w-100">
+            <label for="inputPassword1" >Password *</label>
+            {{ form.password2 }}
+          </div>
+      </div>
+      <div class="clearfix d-flex justify-content-center">
+            <div class="form-group mr-2 align-self-center w-100">
+            <label for="inputFirstname" >First name *</label>
+            {{ form.first_name }}
+            </div>
+            <div class="form-group ml-2 align-self-center w-100">
+            <label for="inputLastname" >Last name *</label>
+            {{ form.last_name }}
+            </div>
+        </div>
+      <div class="clearfix d-flex justify-content-center">
+          <div class="form-group mr-2 align-self-center w-100">
+            <label for="inputEmail" >Email address *</label>
+              {{ form.email }}
+          </div>
+          <div class="form-group ml-2 mr-2 align-self-center w-100">
+            <label for="inputEducation" >Education *</label>
+              {{ p_form.education }}
+          </div>
+          <div class="form-group ml-2 align-self-center w-25">
+            <label for="inputAge" >Age *</label>
+              {{ p_form.age }}
+          </div>
+      </div>
 
+        <div class="clearfix d-flex ">
+              * - wymagane
+          </div>
       <button name="submit" class="btn btn-primary">Register</button>
       <input type="hidden" name="next" value="{% url 'chapters:index' %}">
   </form>

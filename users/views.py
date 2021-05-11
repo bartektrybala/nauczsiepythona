@@ -17,11 +17,12 @@ def register(request):
     if request.method != 'POST':
         # Display blank registration form
         form = UserRegisterForm()
+        p_form = EditProfileForm()
     else:
         # Process completed form.
         form = UserRegisterForm(data=request.POST)
         p_form = EditProfileForm(data=request.POST)
-        if form.is_valid():
+        if form.is_valid() and p_form.is_valid():
 
             new_user = form.save()
             # Log the user in and then redirect to home page
@@ -32,7 +33,7 @@ def register(request):
             new_profile.save()
             return HttpResponseRedirect(reverse('chapters:index'))
 
-    context = {'form': form}
+    context = {'form': form, 'p_form': p_form}
     return render(request, 'users/register.html', context)
 
 
