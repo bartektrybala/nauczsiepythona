@@ -49,15 +49,15 @@ class UserRegisterForm(UserCreationForm):
 class EditUserForm(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control bg-light text-dark',
+               'class': 'form-control',
                'id': 'inputFirstname'}))
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control bg-light text-dark',
+               'class': 'form-control',
                'id': 'inputLastname'}))
     email = forms.CharField(widget=forms.TextInput(
         attrs={'type': 'text',
-               'class': 'form-control bg-light text-dark',
+               'class': 'form-control',
                'id': 'inputEmail'}))
 
     class Meta:
