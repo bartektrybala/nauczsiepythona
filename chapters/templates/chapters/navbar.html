@@ -1,19 +1,16 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="{% url 'chapters:index' %}">
+    <img title="profile image" src="{% static 'img/python.png' %}" class="avatar img-circle img-thumbnail" alt="avatar" height="40" width="40">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active te">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Strona główna <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:index' %}">Application</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'chapters:chapters' %}">Chapters</a>
+        <a class="nav-link" href="{% url 'chapters:chapters' %}">Rozdziały</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'chapters:literatura' %}">Literatura</a>
@@ -31,7 +28,7 @@
           <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="40" width="40">
         </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'users:profile' %}">Hello, {{ user.username }}.</a>
+        <a class="nav-link" href="{% url 'users:profile' %}">Witaj, {{ user.username }}.</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'users:logout' %}">Wyloguj się</a>
