@@ -1,10 +1,50 @@
 {% extends "chapters/baza.html" %}
+{% load static %}
 
 {% block header %}
-  <div class="jumbotron">
-    <h1>Aplikacja do nauki Pythona</h1>
+  <div class="jumbotron" style="background-image: url({% static 'img/python 50.png' %}); background-position-x: center;">
+    <h1 style="text-align: center; font-size: 55px; font-weight: bold;">Aplikacja do nauki Pythona</h1>
   </div>
 {% endblock header %}
+
+
+{% block nav %}
+
+<a href="{% url 'chapters:kodowanie' %}">
+  <textarea id="animation_kodowanie"></textarea>
+</a>
+
+<script>
+
+  var editor = CodeMirror.fromTextArea(document.getElementById('animation_kodowanie'), {
+        mode: "python",
+        autoRefresh:true,
+        theme: "base16-dark",
+        lineNumbers: true,
+        autoCloseBrackets: true,
+        lineWrapping: true
+    });
+    editor.setSize("350", "auto");
+
+  var codeArray = ["def fibo(x):\n\tif x <= 1:\n\t\treturn 1 \n\telse: \n\t\treturn fibo(x-1) + (x-2) \nprint(fibo(15))",
+                   "import numpy as np\n\nsum1, sum2 = 0, 0\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\narr1 = np.reshape(arr, 9)\nfor i in range(len(arr)):\n\tsum1 += arr[i][i]\nnp.fliplr(arr).diagonal()",
+                   "import requests\nfrom bs4 import BeautifulSoup\n\nlink = 'https://genius.com/rap-genius'\nhtml = requests.get(link).text\nsoup = BeautifulSoup(html, 'html.parser')\nres = soup.findAll('p')\n\nf = open('file.txt', 'w')\n\nfor r in res:\n\tf.write(str(r))\nf.close() ",
+                   "import numpy as np\n\na = [[3, 4], [2, 3]]\nb = [[7, 8],[9, 9]]\nc = [[7, 8], [9, 9]]\nA = [[1, 0], [0 ,1]]\n\nb_y = np.linalg.inv(b)\na_y = np.linalg.inv(a)\n\na = [[3, 4], [2, 3]]\n\nnp.linalg.solve(a, A)",
+                   "import random\n\ndef tasowanie(talia):\n\tnowa_talia = []\n\tfor i in range(len(talia)):\n\t\tx = random.choice(talia)\n\t\tnowa_talia.append(x)\n\t\ttalia.remove(x)\n\treturn nowa_talia\n\ni = 0\nrozw = False\nA = [i for i in range(1, 11)] #uporządkowana talia kart, rozmiar talii\nwhile(rozw == False):\n\tB = A.copy()\n\tnowa = tasowanie(B)\n\tif nowa == A:\n\t\t print('Ilość prób:', i)\n\t\trozw = True\n\t\tprint(nowa, A)\n\t i += 1"]
+  str = randomElement = codeArray[Math.floor(Math.random() * codeArray.length)];
+  i = 0;
+  setInterval(function(){
+      if (i-1 == str.length){
+        i = 0;
+        editor.getDoc().setValue("");
+      }
+      editor.getDoc().setValue(str.substr(0, i));
+      i++;
+   }, 100);
+
+</script>
+
+{% endblock nav %}
 
 
 {% block content %}
@@ -63,3 +103,4 @@
   </div>
 </div>
 {% endblock content %}
+

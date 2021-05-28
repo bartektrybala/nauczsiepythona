@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\HP\Desktop\Bartek\semestr VI\praca inżynierska\apka_wtp\apk_env"
+VIRTUAL_ENV="C:\Users\HP\Desktop\Bartek\semestr_VI\praca inżynierska\Aplikacja-do-nauki-Pythona\apk_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

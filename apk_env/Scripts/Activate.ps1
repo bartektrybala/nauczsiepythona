@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\HP\Desktop\Bartek\semestr VI\praca inżynierska\apka_wtp\apk_env"
+$env:VIRTUAL_ENV="C:\Users\HP\Desktop\Bartek\semestr_VI\praca inżynierska\Aplikacja-do-nauki-Pythona\apk_env"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\HP\Desktop\Bartek\semestr VI\praca inżynierska\apka_wtp\apk_env"
+set "VIRTUAL_ENV=C:\Users\HP\Desktop\Bartek\semestr_VI\praca inżynierska\Aplikacja-do-nauki-Pythona\apk_env"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

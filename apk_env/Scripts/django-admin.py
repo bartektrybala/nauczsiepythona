@@ -1,4 +1,4 @@
-#!c:\users\hp\desktop\bartek\semestr vi\praca inżynierska\apka_wtp\apk_env\scripts\python.exe
+#!c:\users\hp\desktop\bartek\semestr_vi\praca inżynierska\aplikacja-do-nauki-pythona\apk_env\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

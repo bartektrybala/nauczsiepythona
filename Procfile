@@ -1,1 +1,0 @@
-web: gunicorn apka_wstepna.wsgi --log-file -
