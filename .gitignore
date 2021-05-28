@@ -1,4 +1,4 @@
 apk_env/
 __pycache__/
 *.sqlite3
-apka_wstepna/passw.py
+passw.py
