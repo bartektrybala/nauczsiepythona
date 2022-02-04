@@ -19,6 +19,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-
-
-
+    def save(self):
+        """
+            Set is_staff flag True for enable admin page for users.
+        """
+        if not self.pk:
+            self.user.is_staff = True
+            self.user.save()
+        super().save()
