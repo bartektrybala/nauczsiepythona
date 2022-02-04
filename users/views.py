@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import render
 
-from .forms import UserRegisterForm, EditUserForm, EditProfileForm
+from .forms import UserRegisterForm, EditProfileForm
 
 
 def logout_view(request):
@@ -37,18 +37,18 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 
-def profile(request):
-    if request.method == 'POST':
-        post_data = request.POST or None
-        file_data = request.FILES or None
-        form = EditUserForm(post_data, instance=request.user)
-        p_form = EditProfileForm(post_data, file_data, instance=request.user.profile)
-        if form.is_valid() and p_form.is_valid():
-            form.save()
-            p_form.save()
-            return HttpResponseRedirect(reverse('users:profile'))
-    else:
-        form = EditUserForm(instance=request.user)
-        p_form = EditProfileForm(instance=request.user.profile)
-    context = {'form': form, 'p_form': p_form}
-    return render(request, 'users/profile.html', context)
+# def profile(request):
+#     if request.method == 'POST':
+#         post_data = request.POST or None
+#         file_data = request.FILES or None
+#         form = EditUserForm(post_data, instance=request.user)
+#         p_form = EditProfileForm(post_data, file_data, instance=request.user.profile)
+#         if form.is_valid() and p_form.is_valid():
+#             form.save()
+#             p_form.save()
+#             return HttpResponseRedirect(reverse('users:profile'))
+#     else:
+#         form = EditUserForm(instance=request.user)
+#         p_form = EditProfileForm(instance=request.user.profile)
+#     context = {'form': form, 'p_form': p_form}
+#     return render(request, 'users/profile.html', context)

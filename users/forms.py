@@ -28,48 +28,14 @@ class UserRegisterForm(UserCreationForm):
                'class': 'form-control',
                'id': 'inputPassword2'}
     ))
-    first_name = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputFirstname'}))
-    last_name = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputLastname'}))
-    email = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputEmail'}))
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']
+        fields = ['username', 'password1', 'password2']
 
-
-class EditUserForm(UserChangeForm):
-    first_name = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputFirstname'}))
-    last_name = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputLastname'}))
-    email = forms.CharField(widget=forms.TextInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputEmail'}))
-
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
 
 
 class EditProfileForm(forms.ModelForm):
-    age = forms.CharField(widget=forms.NumberInput(
-        attrs={'type': 'text',
-               'class': 'form-control',
-               'id': 'inputAge'}))
     education = forms.ChoiceField(choices=EDUCATION_CHOICES, widget=forms.Select(
         attrs={'class': 'form-control',
                'id': 'inputEducation'}))
@@ -81,7 +47,5 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['age', 'education', 'profile_image']
-
-
+        fields = ['education', 'profile_image']
 

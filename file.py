@@ -1,9 +1,3 @@
 print("Hello World!")
-
-
-sdasda
-
-sda
-da
-sd
-a
+for i in range(10):
+  print('sddssd')

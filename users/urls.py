@@ -11,7 +11,7 @@ urlpatterns = [
     # Register page
     path('register/', views.register, name='register'),
     # User page
-    path('profile', views.profile, name='profile'),
+    # path('profile', views.profile, name='profile'),
 ]
 
 
