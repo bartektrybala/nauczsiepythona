@@ -1,6 +1,5 @@
-apk_env/
 __pycache__/
 *.sqlite3
 passw.py
 venv/*
-db.sqlite3
+file.py

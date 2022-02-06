@@ -4,6 +4,8 @@
 {% block content %}
   <form method="post" action="{% url 'users:register' %}" enctype="multipart/form-data" class="form-horizontal" role="form">
       {% csrf_token %}
+      {{ form.errors }}
+      {{ p_form.errors }}
       <div class="form-group align-self-center w-100">
             <label for="inputUsername" >Username *</label>
             {{ form.username }}
