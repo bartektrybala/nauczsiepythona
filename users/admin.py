@@ -9,6 +9,8 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     max_num = 1
     can_delete = False
+    readonly_fields = ('points',)
+    fields = ('education', 'profile_image', 'points')
 
     def get_queryset(self, request):
         return Profile.objects.filter(user_id=request.user.id)
