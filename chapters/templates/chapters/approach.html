@@ -6,8 +6,62 @@
   <h2>{{ topic }}</h2>
 {% endblock header %}
 
-{% block nav %}
-<div style="height: 500px; overflow-y:auto; width: 90%;">
+{% block content %}
+<div class="d-flex justify-content-between">
+  <div style="width: 575px;">
+    <div class="border-bottom">
+      <div class="d-flex justify-content-center">
+        <a id="task-button" class="btn btn-light">Zadanie</a>
+        <a id="console-button" class="btn btn-light">Konsola</a>
+      </div>
+    </div>
+    <div>
+      <div id="task">
+        <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
+        <div class="code_text">{{ topic.code_text|linebreaks }}</div>
+      </div>
+      
+      {% if res %}
+        <div id="console" class="code_text" style="display: none;">
+          <p>{{ res|linebreaks }}</p>
+        </div>
+      {% else %}
+        <p>Tutaj pojawi się rezultat....</p>
+      {% endif %}
+      
+    </div>
+  </div>
+  <div>
+    <form action="{% url 'chapters:approach' topic.id %}" method="post">
+        <div style="font-size: 14px; opacity: 0.85;">
+        {% csrf_token %}
+        {{ form.as_p }}
+          <script>
+                var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+                      mode: "python",
+                      theme: "elegant",
+                      lineNumbers: true,
+                      autoCloseBrackets: true,
+                      lineWrapping: true,
+                  });
+                  editor.setSize("700", "300");
+                  
+            </script>
+        </div>
+  
+        <button name="submit" id="code-run-button" class="btn btn-info float-left">Uruchom</button>
+    </form>
+      {% if approach.points_awarded %}
+          <a href="{% url 'chapters:approach' next_topic_id %}">
+              <button class="btn btn-warning float-left ml-1" >Następny temat</button>
+          </a>
+      {% endif %}
+    </div>
+</div>
+
+
+
+<!-- <div style="height: 500px; overflow-y:auto; width: 90%;">
     <table style="max-height: 500px; overflow: auto;">
       <tbody>
         {% for topic in topics %}
@@ -22,54 +76,29 @@
         {% endfor %}
       </tbody>
     </table>
-</div>
-<div style="text-align: center; padding-top:10px;">
-<span class="badge badge-light" style="font-size: 20px;">Points:</span>
-  {% if user.profile.points > 0 %}
-    <span class="badge badge-success" style="font-size: 20px;">{{ user.profile.points }}</span>
-  {% else %}
-    <span class="badge badge-danger" style="font-size: 20px;">{{ user.profile.points }}</span>
-  {% endif %}
- </div>
-{% endblock nav %}
+</div> -->
 
-{% block content %}
+<script>
+  $(document).ready(function () {
+    $("#code-run-button").on("click", () => {
+      localStorage.setItem("layout-item", "console")
+    })
 
-  <p>{{ topic.text|linebreaks }}</p>
-  <div>
-  <form action="{% url 'chapters:approach' topic.id %}" method="post">
-      <div>
-      {% csrf_token %}
-      {{ form.as_p }}
-        <script>
-              var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-                    mode: "python",
-                    theme: "base16-dark",
-                    lineNumbers: true,
-                    autoCloseBrackets: true,
-                    lineWrapping: true
-                });
-                editor.setSize("auto", "400");
-          </script>
-      </div>
+    $("#task-button").on("click", () => {
+      localStorage.setItem("layout-item", "task")
+        $("#console").hide()
+        $("#task").show()
+    })
 
-      <button name="submit" class="btn btn-info float-left">Uruchom</button>
-  </form>
-    {% if approach.points_awarded %}
-        <a href="{% url 'chapters:approach' next_topic_id %}">
-            <button class="btn btn-warning float-left ml-1" >Następny temat</button>
-        </a>
-    {% endif %}
-  </div>
+    $("#console-button").on("click", () => {
+      localStorage.setItem("layout-item", "console")
+        $("#task").hide()
+        $("#console").show()
+    })
+
+    itemToClick = localStorage.getItem("layout-item")
+    $("#" + itemToClick + "-button").click()
+    }
+  )
+</script>
 {% endblock content %}
-
-{% block result %}
-    <div class="console">
-  <header>
-    <p>Terminal</p>
-  </header>
-  <div class="consolebody">
-    <p >{{ res|linebreaks }}</p>
-  </div>
-</div>
-{% endblock result %}

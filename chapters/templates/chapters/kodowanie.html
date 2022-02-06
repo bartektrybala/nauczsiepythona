@@ -8,7 +8,7 @@
 
 
 {% block content %}
-<div>
+<div style="min-width: 750px;">
 <form action="{% url 'chapters:kodowanie' %}" method="post">
       <div>
       {% csrf_token %}
@@ -16,12 +16,12 @@
         <script>
               var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
                     mode: "python",
-                    theme: "base16-dark",
+                    theme: "elegant",
                     lineNumbers: true,
                     autoCloseBrackets: true,
                     lineWrapping: true
                 });
-                editor.setSize("auto", "auto");
+                editor.setSize("auto", null);
           </script>
       </div>
 

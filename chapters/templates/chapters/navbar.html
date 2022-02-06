@@ -26,12 +26,18 @@
     </ul>
     <ul class="navbar-nav justify-content-end">
         {% if user.is_authenticated %}
-        <li class="text-center ">
+        <li class="text-center">
           <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail"
                alt="avatar" height="40" width="40">
         </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:auth_user_change' user.id %}">Witaj, {{ user.username }}.</a>
+        <a class="nav-link" href="{% url 'admin:auth_user_change' user.id %}">Witaj, {{ user.username }}</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="navbar-brand bg-image hover-zoom" href=#>{{ user.profile.points }}
+          <img src="{% static 'img/points.png' %}" height="30" width="30">
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'users:logout' %}">Wyloguj się</a>

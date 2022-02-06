@@ -1,17 +1,12 @@
-body.darkmode--activated {
-  background-color: red;
-}
-
 body
 {
-  background-color: coral;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
 }
 .container_base
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 #content
 {
@@ -36,34 +31,15 @@ body
   height: 500px;
   overflow-y:auto;
 }
-.navigation-class
-{
-  float: left;
-  width: 25%;
-  height: 500px;
+.content_div {
+  margin: auto;
+  min-width: 1000px;
 }
-.content_div
-{
-    float: left;
-    width: 50%;
-    min-height: 600px;
-}
-.result_div
-{
-  float: left;
-  width: 25%;
-  height: 500px;
-}
-
 .navigation-class_kod
 {
   float: left;
   width: 15%;
   height: 500px;
-}
-.result
-{
-  float: left;
 }
 
 .topic_scroll
@@ -83,8 +59,6 @@ body
 	line-height: 1.5em;
 	margin: 0 auto;
 	padding: 2em 0 3em;
-	width: 90%;
-	max-width: 2000px;
 	overflow: hidden;
 	max-height: 500px;
     overflow: auto;
@@ -138,39 +112,26 @@ td.rank {
   overflow-wrap: break-word;
   max-width: 350px;
 }
-
-
-
-.console {
-  float: left;
-  font-family: Consolas,monaco,monospace;
-  width: max-content;
-  height: 450px;
-  box-sizing: border-box;
-  margin: auto;
-  width: 350px;
-
+#console {
+  max-height: 308px;
+  overflow-y: auto;
 }
-.console header {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-color: #555;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  color: #DDD;
+
+.code_text {
+  background-color: #300A24;
+  border-radius: 3px;
+  color: white;
+  font-family: "Monospace";
+  padding: 5px;
+  margin: 5px;
 }
-.console .consolebody {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  box-sizing: border-box;
-  padding: 20px;
-  height: calc(100% - 40px);
-  background-color: #fff;
-  color: purple;
-  font-weight: bold;
-  overflow: auto;
-}
-.console .consolebody p {
-  line-height: 1.5rem;
+
+body, html {
+  height: 100%;
+  /* background-image: url("../img/Yakkety_Yak_Wallpaper.jpg"); */
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
 }

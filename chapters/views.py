@@ -67,14 +67,11 @@ def approach(request, topic_id):
     else:
         next_topic_id = topic_id+1
 
-    try:
-        approach = UserApproach.objects.get(user=request.user, topic=topic)
-    except UserApproach.DoesNotExist:
-        approach = UserApproach.objects.create(user=request.user, topic=topic)
+    approach, _ = UserApproach.objects.get_or_create(user=request.user, topic=topic)
     res = exec_user_input(approach.user_approach)
 
     if request.method != 'POST':
-        if approach.points_awarded:
+        if approach.user_approach:
             form = ApproachForm(instance=approach)
         else:
             approach.user_approach = topic.approach
@@ -82,7 +79,8 @@ def approach(request, topic_id):
     else:
         form = ApproachForm(instance=approach, data=request.POST)
         points_f = Profile.objects.get(user=request.user)
-
+        if form.is_valid():
+            form.save()
         user_input = request.POST['user_approach']
         res = exec_user_input(user_input)
         if type(res) == str:
@@ -98,8 +96,8 @@ def approach(request, topic_id):
                         points_f.save()
                         approach.points_earned = topic.points
                         approach.points_awarded = True
+                        approach.save()
 
-                form.save()
                 return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
     context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach,
                'next_topic_id': next_topic_id}
