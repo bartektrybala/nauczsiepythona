@@ -2,3 +2,4 @@ __pycache__/
 passw.py
 venv/*
 file.py
+static/codemirror
