@@ -12,3 +12,8 @@ def get_chapter_points_tag(chapter, user):
 def get_topic_points_tag(topic, user):
     return topic.user_topic_points(user)
 
+
+themes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+@register.simple_tag
+def get_theme(counter):
+    return themes[counter%8]

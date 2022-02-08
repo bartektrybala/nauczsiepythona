@@ -119,7 +119,7 @@ td.rank {
 }
 
 .code_text {
-  background-color: #300A24;
+  background-color: black;
   border-radius: 3px;
   color: white;
   font-family: "Monospace";
@@ -129,7 +129,7 @@ td.rank {
 
 body, html {
   height: 100%;
-  background-image: url("../img/tlo_baza.png");
+  /* background-image: url("../img/tlo_baza.png"); */
 
   /* Center and scale the image nicely */
   background-position: center;
