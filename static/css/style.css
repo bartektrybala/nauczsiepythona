@@ -53,6 +53,8 @@ body
 {
     height: 500px;
     overflow-y:auto;
+    width: 50%;
+    margin: auto;
 }
 
 .wrapper {
@@ -99,10 +101,9 @@ td.rank {
 #my_container
 {
     margin: auto;
-    width: 50%px;
+    width: 50%;
     text-align: center;
  }
-
 
 .output
 {
