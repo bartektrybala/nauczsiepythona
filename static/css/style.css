@@ -1,17 +1,12 @@
-body.darkmode--activated {
-  background-color: red;
-}
-
 body
 {
-  background-color: coral;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
 }
 .container_base
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 #content
 {
@@ -36,34 +31,15 @@ body
   height: 500px;
   overflow-y:auto;
 }
-.navigation-class
-{
-  float: left;
-  width: 25%;
-  height: 500px;
+.content_div {
+  margin: auto;
+  min-width: 1000px;
 }
-.content_div
-{
-    float: left;
-    width: 50%;
-    min-height: 600px;
-}
-.result_div
-{
-  float: left;
-  width: 25%;
-  height: 500px;
-}
-
 .navigation-class_kod
 {
   float: left;
   width: 15%;
   height: 500px;
-}
-.result
-{
-  float: left;
 }
 
 .topic_scroll
@@ -77,14 +53,14 @@ body
 {
     height: 500px;
     overflow-y:auto;
+    width: 50%;
+    margin: auto;
 }
 
 .wrapper {
 	line-height: 1.5em;
 	margin: 0 auto;
 	padding: 2em 0 3em;
-	width: 90%;
-	max-width: 2000px;
 	overflow: hidden;
 	max-height: 500px;
     overflow: auto;
@@ -125,10 +101,9 @@ td.rank {
 #my_container
 {
     margin: auto;
-    width: 50%px;
+    width: 50%;
     text-align: center;
  }
-
 
 .output
 {
@@ -138,39 +113,54 @@ td.rank {
   overflow-wrap: break-word;
   max-width: 350px;
 }
-
-
-
-.console {
-  float: left;
-  font-family: Consolas,monaco,monospace;
-  width: max-content;
-  height: 450px;
-  box-sizing: border-box;
-  margin: auto;
-  width: 350px;
-
+.terminal {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 6px;
+  padding-top: 45px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
 }
-.console header {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-color: #555;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  color: #DDD;
+
+.terminal::before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: rgb(58, 58, 58);
+  color: #c2c3c4;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 0;
+  padding: 14px 0;
+  text-indent: 4px;
 }
-.console .consolebody {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  box-sizing: border-box;
-  padding: 20px;
-  height: calc(100% - 40px);
-  background-color: #fff;
-  color: purple;
-  font-weight: bold;
-  overflow: auto;
+
+.terminal pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  color: white;
+  padding: 0 1rem 1rem;
+  margin: 0;
 }
-.console .consolebody p {
-  line-height: 1.5rem;
+
+.code_text {
+  background-color: black;
+  border-radius: 3px;
+  color: white;
+  font-family: "Monospace";
+  padding: 5px;
+  margin: 5px;
+}
+
+body, html {
+  height: 100%;
+  /* background-image: url("../img/tlo_baza.png"); */
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
 }

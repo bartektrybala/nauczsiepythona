@@ -1,6 +1,7 @@
 <html lang="pl">
 {% extends "chapters/baza.html" %}
 {% load  chapters_extras %}
+{% load  static %}
 
 <head>
     <meta charset="utf-8"/>
@@ -8,20 +9,24 @@
 
 
 {% block header %}
-  <h2>Chapters:</h2>
+  <h2>Rozdziały:</h2>
 {% endblock header %}
 
 {% block content %}
-<ul>
-    {% for chapter in chapters %}
-    <a class="ch_button_a" href="{% url 'chapters:topic' chapter.id %}"><button type="button" class="btn btn-primary mb-2">
-      {{ chapter }} <span class="badge badge-light ml-2">
-        {% get_chapter_points_tag chapter user %} / {{ chapter.get_chapter_points }}</span>
-    </button></a>
-    {% empty %}
-      <li>No chapters have been added yet.</li>
-    {% endfor %}
-</ul>
-
+  {% for chapter in chapters %}
+    {% if forloop.counter|divisibleby:3 %}
+      <div class="card border-{% get_theme forloop.counter0 %} mx-3 clearfix" style="max-width: 18rem;">
+    {% else %}
+      <div class="card border-{% get_theme forloop.counter0 %} mx-3 float-left" style="max-width: 18rem;">
+    {% endif %}
+      <div class="card-header">{{ chapter.name }}</div>
+      <div class="card-body">
+        <p class="card-text">{{ chapter.text }}.</p>
+        <a href="{% url 'chapters:topic' chapter.id %}" class="btn btn-outline-{% get_theme forloop.counter0 %}">
+          {% get_chapter_points_tag chapter user %} / {{ chapter.get_chapter_points }}</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endblock content %}
 </html>

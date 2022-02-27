@@ -1,5 +1,5 @@
 __pycache__/
-*.sqlite3
 passw.py
 venv/*
 file.py
+static/codemirror

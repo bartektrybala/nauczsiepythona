@@ -40,20 +40,13 @@
     {% endfor %}
 {% endif %}
 
-<div class="border-bottom mx-auto w-50">
+<div class="mx-auto" style="text-align: center;">
     {% block header %}{% endblock header %}
 </div>
-<div class="container_base">
-    <div class="navigation-class">
-    {% block nav %}{% endblock nav %}
-    </div>
 
+<div class="container_base">
     <div class="content_div">
         {% block content %}{% endblock content %}
-    </div>
-
-    <div class="result_div">
-        {% block result %}{% endblock result %}
     </div>
 </div>
 
