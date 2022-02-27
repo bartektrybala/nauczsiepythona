@@ -18,15 +18,16 @@
     <div>
       <div id="task">
         <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
-        <div class="code_text"><p>{{ topic.code_text|linebreaks }}</p></div>
+        <div class="terminal">{{ topic.code_text|linebreaks }}</div>
       </div>
-      
+
+    <div id="console" class="terminal" style="display: none;">
       {% if res %}
-        <div id="console" class="code_text" style="display: none;">
-          <p>{{ res|linebreaks }}</p>
+          {{ res|linebreaks }}
         </div>
       {% else %}
         <p>Tutaj pojawi się rezultat....</p>
+      </div>
       {% endif %}
       
     </div>
