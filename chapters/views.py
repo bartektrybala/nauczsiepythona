@@ -59,13 +59,6 @@ def topic(request, chapter_id):
 def approach(request, topic_id):
     """Add a new approach for topic"""
     topic = Topic.objects.get(id=topic_id)
-    chapter = topic.chapter
-    topics = chapter.topic_set.all()
-    last_topic = Topic.objects.last()
-    if topic_id == last_topic.id:
-        next_topic_id = 1
-    else:
-        next_topic_id = topic_id+1
 
     approach, _ = UserApproach.objects.get_or_create(user=request.user, topic=topic)
     res = exec_user_input(approach.user_approach)
@@ -99,8 +92,7 @@ def approach(request, topic_id):
                         approach.save()
 
                 return HttpResponseRedirect(reverse('chapters:approach', args=[topic.id]))
-    context = {'topic': topic, 'topics': topics, 'form': form, 'res': res, 'approach': approach,
-               'next_topic_id': next_topic_id}
+    context = {'topic': topic, 'form': form, 'res': res, 'approach': approach}
     return render(request, 'chapters/approach.html', context)
 
 

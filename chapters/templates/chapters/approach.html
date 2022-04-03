@@ -11,7 +11,10 @@
   <div style="width: 50%;">
     <div class="border-bottom">
       <div class="d-flex justify-content-center">
-        <a id="task-button" class="btn btn-light px-5">Zadanie</a>
+      <a href="{% url 'chapters:topic' topic.chapter.id %}" style="font-size: x-large;">
+        &#8617;
+      </a>
+      <a id="task-button" class="btn btn-light px-5">Zadanie</a>
         <a id="console-button" class="btn btn-light px-5">Konsola</a>
       </div>
     </div>
@@ -54,7 +57,7 @@
         <button name="submit" id="code-run-button" class="btn btn-info float-left">Uruchom</button>
     </form>
       {% if approach.points_awarded %}
-          <a href="{% url 'chapters:approach' next_topic_id %}">
+          <a href="{% get_next_topic topic.id %}">
               <button id="next_topic_button_id" class="btn btn-warning float-left ml-1" >Następny temat</button>
           </a>
       {% endif %}
