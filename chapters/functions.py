@@ -2,11 +2,10 @@ import subprocess
 
 
 def exec_user_input(user_input):
-    # encode the code
-    f = open('file.py', 'w', newline='', encoding='utf-8')
-    f.truncate(0)
-    f.write(user_input)
-    f.close()
+    # write input to file
+    with open('file.py', 'w', newline='', encoding='utf-8') as f:
+        f.truncate(0)
+        f.write(user_input)
 
     try:
         # text=True leaves Windows, which commonly is configured with whatever code page makes sense for the geography where it was sold;
