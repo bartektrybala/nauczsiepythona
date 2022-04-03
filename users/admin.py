@@ -13,6 +13,8 @@ class ProfileInline(admin.StackedInline):
     fields = ('education', 'profile_image', 'points')
 
     def get_queryset(self, request):
+        if request.user.is_superuser:
+            return super().get_queryset(request)
         return Profile.objects.filter(user_id=request.user.id)
 
     def has_change_permission(self, request, obj=None):
@@ -40,6 +42,10 @@ class CustomUserAdmin(UserAdmin):
 
 
     def get_queryset(self, request):
+        print(request.user.id)
+
+        if request.user.is_superuser:
+            return super().get_queryset(request)
         return User.objects.filter(id=request.user.id)
 
     def has_change_permission(self, request, obj=None):

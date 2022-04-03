@@ -7,6 +7,7 @@ body
 {
     display: flex;
     justify-content: space-evenly;
+    min-width: 800px;
 }
 #content
 {
@@ -33,7 +34,7 @@ body
 }
 .content_div {
   margin: auto;
-  min-width: 1000px;
+  min-width: 800px;
 }
 .navigation-class_kod
 {
@@ -53,7 +54,7 @@ body
 {
     height: 500px;
     overflow-y:auto;
-    width: 50%;
+    width: 75%;
     margin: auto;
 }
 
@@ -63,7 +64,7 @@ body
 	padding: 2em 0 3em;
 	overflow: hidden;
 	max-height: 500px;
-    overflow: auto;
+  overflow: auto;
 }
 
 table {
@@ -122,6 +123,8 @@ td.rank {
   margin-top: 8px;
   overflow: hidden;
   background-color: rgb(15, 15, 16);
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  color: #c2c3c4;
 }
 
 .terminal::before {
@@ -131,7 +134,6 @@ td.rank {
   left: 0;
   height: 4px;
   background: rgb(58, 58, 58);
-  color: #c2c3c4;
   width: 100%;
   font-size: 2rem;
   line-height: 0;
@@ -140,7 +142,6 @@ td.rank {
 }
 
 .terminal pre {
-  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   color: white;
   padding: 0 1rem 1rem;
   margin: 0;
@@ -149,18 +150,8 @@ td.rank {
 .code_text {
   background-color: black;
   border-radius: 3px;
-  color: white;
+  color: #c2c3c4;
   font-family: "Monospace";
   padding: 5px;
   margin: 5px;
-}
-
-body, html {
-  height: 100%;
-  /* background-image: url("../img/tlo_baza.png"); */
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto;
 }

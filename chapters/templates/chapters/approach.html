@@ -8,17 +8,22 @@
 
 {% block content %}
 <div class="d-flex justify-content-between">
-  <div style="width: 575px;">
+  <div style="width: 50%;">
     <div class="border-bottom">
       <div class="d-flex justify-content-center">
-        <a id="task-button" class="btn btn-light">Zadanie</a>
-        <a id="console-button" class="btn btn-light">Konsola</a>
+      <a href="{% url 'chapters:topic' topic.chapter.id %}" style="font-size: x-large;">
+        &#8617;
+      </a>
+      <a id="task-button" class="btn btn-light px-5">Zadanie</a>
+        <a id="console-button" class="btn btn-light px-5">Konsola</a>
       </div>
     </div>
     <div>
       <div id="task">
         <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
-        <div class="terminal">{{ topic.code_text|linebreaks }}</div>
+        <div class="terminal mx-auto" >
+          {{ topic.code_text|linebreaks }}
+        </div>
       </div>
 
     <div id="console" class="terminal" style="display: none;">
@@ -45,16 +50,15 @@
                       autoCloseBrackets: true,
                       lineWrapping: true,
                   });
-                  editor.setSize("700", "300");
-                  
+                  editor.setSize("400", "300");
             </script>
         </div>
   
         <button name="submit" id="code-run-button" class="btn btn-info float-left">Uruchom</button>
     </form>
       {% if approach.points_awarded %}
-          <a href="{% url 'chapters:approach' next_topic_id %}">
-              <button class="btn btn-warning float-left ml-1" >Następny temat</button>
+          <a href="{% get_next_topic topic.id %}">
+              <button id="next_topic_button_id" class="btn btn-warning float-left ml-1" >Następny temat</button>
           </a>
       {% endif %}
     </div>
@@ -95,6 +99,10 @@
       localStorage.setItem("layout-item", "console")
         $("#task").hide()
         $("#console").show()
+    })
+
+    $("#next_topic_button_id").on("click", () => {
+      localStorage.setItem("layout-item", "task")
     })
 
     itemToClick = localStorage.getItem("layout-item")
