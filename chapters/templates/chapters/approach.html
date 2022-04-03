@@ -18,7 +18,9 @@
     <div>
       <div id="task">
         <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
-        <div class="terminal mx-auto" >{{ topic.code_text|linebreaks }}</div>
+        <div class="terminal mx-auto" >
+          {{ topic.code_text|linebreaks }}
+        </div>
       </div>
 
     <div id="console" class="terminal" style="display: none;">
