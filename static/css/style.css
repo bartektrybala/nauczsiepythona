@@ -7,6 +7,7 @@ body
 {
     display: flex;
     justify-content: space-evenly;
+    min-width: 800px;
 }
 #content
 {
@@ -33,7 +34,7 @@ body
 }
 .content_div {
   margin: auto;
-  min-width: 1000px;
+  min-width: 800px;
 }
 .navigation-class_kod
 {
@@ -53,7 +54,7 @@ body
 {
     height: 500px;
     overflow-y:auto;
-    width: 50%;
+    width: 75%;
     margin: auto;
 }
 
@@ -63,7 +64,7 @@ body
 	padding: 2em 0 3em;
 	overflow: hidden;
 	max-height: 500px;
-    overflow: auto;
+  overflow: auto;
 }
 
 table {

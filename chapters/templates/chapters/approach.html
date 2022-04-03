@@ -8,17 +8,17 @@
 
 {% block content %}
 <div class="d-flex justify-content-between">
-  <div style="width: 575px;">
+  <div style="width: 50%;">
     <div class="border-bottom">
       <div class="d-flex justify-content-center">
-        <a id="task-button" class="btn btn-light">Zadanie</a>
-        <a id="console-button" class="btn btn-light">Konsola</a>
+        <a id="task-button" class="btn btn-light px-5">Zadanie</a>
+        <a id="console-button" class="btn btn-light px-5">Konsola</a>
       </div>
     </div>
     <div>
       <div id="task">
         <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
-        <div class="terminal">{{ topic.code_text|linebreaks }}</div>
+        <div class="terminal mx-auto" >{{ topic.code_text|linebreaks }}</div>
       </div>
 
     <div id="console" class="terminal" style="display: none;">
@@ -45,8 +45,7 @@
                       autoCloseBrackets: true,
                       lineWrapping: true,
                   });
-                  editor.setSize("700", "300");
-                  
+                  editor.setSize("400", "300");
             </script>
         </div>
   

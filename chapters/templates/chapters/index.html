@@ -9,22 +9,23 @@
 
 
 {% block content %}
+<div style="text-align: center;">
+  <h2>
+    Nauczysz się Pythona od podstaw
+  </h2>
   {% if user.is_authenticated %}
     {% if user.profile.points == 0 %}
       <h2><a href="{% url 'chapters:approach' 1 %}">Zacznij naukę</a> od zaraz.</h2>
     {% else %}
       <h2><a href="{% url 'chapters:approach' last_topic_id %}">Kontynuuj naukę</a></h2>
     {% endif %}
-
   {% else %}
     <h2>
       <a href="{% url 'users:register' %}">Zarejestruj konto</a> aby rozpocząć naukę
       i notować swoje postępy.
     </h2>
   {% endif %}
-  <h2>
-    Nauczysz się Pythona od podstaw
-  </h2>
+</div>
 
 <div class="container_index">
   <div class="wrapper">
@@ -41,7 +42,7 @@
       {% for user in users %}
         {% if user == request.user %}
           <tr style="background-color: orange">
-          <td class="rank">{{ forloop.counter }}.</td>`
+          <td class="rank">{{ forloop.counter }}.</td>
           <td class="team">
             <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="25" width="25">
              {{ user.username }}</td>
