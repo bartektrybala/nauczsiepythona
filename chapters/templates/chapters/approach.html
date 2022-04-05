@@ -3,17 +3,26 @@
 
 
 {% block header %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Początek</a></li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:chapters' %}">Rozdziały</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:topic' topic.chapter.id %}">{{ topic.chapter }}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{ topic }}</li>
+  </ol>
+</nav>
   <h2>{{ topic }}</h2>
 {% endblock header %}
 
 {% block content %}
-<div class="d-flex justify-content-center">
-  <div style="width: 50%;">
+<div class="d-flex justify-content-between">
+  <div class="w-50">
     <div class="border-bottom">
       <div class="d-flex justify-content-center">
-      <a href="{% url 'chapters:topic' topic.chapter.id %}" style="font-size: x-large;">
-        &#8617;
-      </a>
       <a id="task-button" class="btn btn-light px-5">Zadanie</a>
         <a id="console-button" class="btn btn-light px-5">Konsola</a>
       </div>
@@ -37,7 +46,7 @@
       
     </div>
   </div>
-  <div>
+  <div class="w-50">
     <form action="{% url 'chapters:approach' topic.id %}" method="post">
         <div style="font-size: 14px; opacity: 0.85;">
         {% csrf_token %}

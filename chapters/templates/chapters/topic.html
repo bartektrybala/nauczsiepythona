@@ -3,6 +3,15 @@
 {% load  chapters_extras %}
 
 {% block header %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Początek</a></li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:chapters' %}">Rozdziały</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{ chapter }}</li>
+  </ol>
+</nav>
   <h2>{{ chapter }}: </h2>
 {% endblock header %}
 
