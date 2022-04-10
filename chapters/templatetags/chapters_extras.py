@@ -28,3 +28,8 @@ themes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light
 @register.simple_tag
 def get_theme(counter):
     return themes[counter%8]
+
+@register.simple_tag
+def calc_chapter_progres(user, chapter):
+    chapter_progres = chapter.user_chapter_points(user) / chapter.get_chapter_points() * 100
+    return int(chapter_progres)

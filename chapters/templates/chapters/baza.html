@@ -40,18 +40,9 @@
     {% endfor %}
 {% endif %}
 
-<div class="mx-auto text-center mb-2">
-    {% block header %}{% endblock header %}
-</div>
+{% block header %}{% endblock header %}
 
-<div class="container_base">
-    <div class="content_div">
-        {% block content %}{% endblock content %}
-    </div>
-</div>
-
-<div id="footer">
-</div>
+{% block content %}{% endblock content %}
 
 </body>
 </html>

@@ -15,20 +15,25 @@
     <li class="breadcrumb-item active" aria-current="page">Rozdziały</li>
   </ol>
 </nav>
+<div class="text-center mb-2">
   <h2>Rozdziały:</h2>
+</div>
 {% endblock header %}
 
 {% block content %}
+<div class="d-flex align-content-start flex-wrap justify-content-center">
   {% for chapter in chapters %}
-    {% if forloop.counter|divisibleby:3 %}
-      <div class="card border-{% get_theme forloop.counter0 %} mx-3 clearfix" style="max-width: 18rem;">
-    {% else %}
-      <div class="card border-{% get_theme forloop.counter0 %} mx-3 float-left" style="max-width: 18rem;">
-    {% endif %}
+    <div class="card border-{% get_theme forloop.counter0 %} mx-2 my-2 float-left"
+      style="width: 25rem; height: 25rem;">
       <div class="card-header">{{ chapter.name }}</div>
       <div class="card-body">
         <p class="card-text">{{ chapter.text }}.</p>
-        <a href="{% url 'chapters:topic' chapter.id %}" class="btn btn-outline-{% get_theme forloop.counter0 %}">
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" style="width: {% calc_chapter_progres user chapter %}%" 
+          aria-valuenow="{% calc_chapter_progres user chapter %}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <a href="{% url 'chapters:topic' chapter.id %}"
+        class="btn btn-outline-{% get_theme forloop.counter0 %} mt-5">
           {% get_chapter_points_tag chapter user %} / {{ chapter.get_chapter_points }}</a>
       </div>
     </div>
