@@ -10,3 +10,4 @@ pytz==2019.2
 numpy==1.19.3
 zipp==0.6.0
 whitenoise==5.2.0
+gunicorn
