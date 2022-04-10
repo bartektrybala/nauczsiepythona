@@ -11,7 +11,6 @@ body
 }
 #content
 {
-  float: left;
   padding: 20px;
   width: 800px;
 }
@@ -35,6 +34,10 @@ body
 .content_div {
   margin: auto;
   min-width: 800px;
+}
+.approach_div {
+  margin: auto;
+  width: 1000px;
 }
 .navigation-class_kod
 {
