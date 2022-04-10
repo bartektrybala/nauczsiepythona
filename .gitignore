@@ -1,5 +1,6 @@
 __pycache__/
 passw.py
 venv/*
+.virtualenv/*
 file.py
 static/codemirror

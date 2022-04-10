@@ -3,11 +3,21 @@
 {% load  chapters_extras %}
 
 {% block header %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Początek</a></li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:chapters' %}">Rozdziały</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{ chapter }}</li>
+  </ol>
+</nav>
   <h2>{{ chapter }}: </h2>
 {% endblock header %}
 
 {% block content %}
-<div style="height: 500px; overflow-y:auto;">
+<div id="content" class="content_div">
+  <div style="height: 500px; overflow-y:auto;">
     <table style="max-height: 500px; overflow: auto;">
       <tbody>
         {% for topic in topics %}
@@ -22,5 +32,6 @@
         {% endfor %}
       </tbody>
     </table>
+</div>
 </div>
 {% endblock content %}

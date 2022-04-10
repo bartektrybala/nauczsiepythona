@@ -3,66 +3,80 @@
 
 
 {% block header %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Początek</a></li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:chapters' %}">Rozdziały</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'chapters:topic' topic.chapter.id %}">{{ topic.chapter }}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{ topic }}</li>
+  </ol>
+</nav>
+<div class="text-center mb-2">
   <h2>{{ topic }}</h2>
+</div>
 {% endblock header %}
 
 {% block content %}
-<div class="d-flex justify-content-center">
-  <div style="width: 50%;">
-    <div class="border-bottom">
-      <div class="d-flex justify-content-center">
-      <a href="{% url 'chapters:topic' topic.chapter.id %}" style="font-size: x-large;">
-        &#8617;
-      </a>
-      <a id="task-button" class="btn btn-light px-5">Zadanie</a>
-        <a id="console-button" class="btn btn-light px-5">Konsola</a>
-      </div>
-    </div>
-    <div>
-      <div id="task">
-        <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
-        <div class="terminal mx-auto" >
-          {{ topic.code_text|linebreaks }}
+<div class="approach_div">
+  <div class="d-flex justify-content-between">
+    <div class="w-50">
+      <div class="border-bottom">
+        <div class="d-flex justify-content-center">
+        <a id="task-button" class="btn btn-light px-5">Zadanie</a>
+          <a id="console-button" class="btn btn-light px-5">Konsola</a>
         </div>
       </div>
-
-    <div id="console" class="terminal" style="display: none;">
-      {% if res %}
-          {{ res|linebreaks }}
-        </div>
-      {% else %}
-        <p>Tutaj pojawi się rezultat....</p>
-      </div>
-      {% endif %}
-      
-    </div>
-  </div>
-  <div>
-    <form action="{% url 'chapters:approach' topic.id %}" method="post">
-        <div style="font-size: 14px; opacity: 0.85;">
-        {% csrf_token %}
-        {{ form.as_p }}
-          <script>
-                var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-                      mode: "python",
-                      theme: "elegant",
-                      lineNumbers: true,
-                      autoCloseBrackets: true,
-                      lineWrapping: true,
-                  });
-                  editor.setSize("500", "300");
-            </script>
+      <div>
+        <div id="task">
+          <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
+          <div class="terminal mx-auto" >
+            {{ topic.code_text|linebreaks }}
+          </div>
         </div>
   
-        <button name="submit" id="code-run-button" class="btn btn-info float-left">Uruchom</button>
-    </form>
-      {% if approach.points_awarded %}
-          <a href="{% get_next_topic topic.id %}">
-              <button id="next_topic_button_id" class="btn btn-warning float-left ml-1" >Następny temat</button>
-          </a>
-      {% endif %}
+      <div id="console" class="terminal" style="display: none;">
+        {% if res %}
+            {{ res|linebreaks }}
+          </div>
+        {% else %}
+          <p>Tutaj pojawi się rezultat....</p>
+        </div>
+        {% endif %}
+        
+      </div>
     </div>
+    <div class="w-50">
+      <form action="{% url 'chapters:approach' topic.id %}" method="post">
+          <div style="font-size: 14px; opacity: 0.85;">
+          {% csrf_token %}
+          {{ form.as_p }}
+            <script>
+                  var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+                        mode: "python",
+                        theme: "elegant",
+                        lineNumbers: true,
+                        autoCloseBrackets: true,
+                        lineWrapping: true,
+                    });
+                  editor.setSize(450, 400)
+              </script>
+          </div>
+    
+          <button name="submit" id="code-run-button" class="btn btn-info float-left">Uruchom</button>
+      </form>
+        {% if approach.points_awarded %}
+            <a href="{% get_next_topic topic.id %}">
+                <button id="next_topic_button_id" class="btn btn-warning float-left ml-1" >Następny temat</button>
+            </a>
+        {% endif %}
+      </div>
+  </div>
 </div>
+
 
 
 
