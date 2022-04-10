@@ -10,10 +10,13 @@ services:
       - 8000:8000
   nginx:
     build: ./nginx
-    volumes:
-      - static:/static
     ports:
       - 80:80
+      - 443:443
+    volumes:
+      - static:/static
+      - ./ssl/fullchain.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/fullchain.pem:ro
+      - ./ssl/private.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/private.pem:ro
     depends_on:
       - django_gunicorn
 
