@@ -15,6 +15,7 @@ services:
       - 443:443
     volumes:
       - static:/static
+      - ./media:/media
       - ./ssl/fullchain.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/fullchain.pem:ro
       - ./ssl/private.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/private.pem:ro
     depends_on:
