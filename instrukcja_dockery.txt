@@ -1,0 +1,82 @@
+https://www.programonaut.com/setup-ssl-with-docker-nginx-and-lets-encrypt/
+
+1. docker-compose up -d nauczsiepythona
+2. docker-compose up -d nginx with config:
+    upstream django {
+        server nauczsiepythona:8000;
+    }
+    server {
+        listen 80;
+
+        server_name nauczsiepythona.pl www.nauczsiepythona.pl;
+
+        location / {
+            proxy_set_header Host $host;
+            proxy_pass http://django;
+        }
+        location /static {
+            alias /static/;
+        }
+        location /media {
+            alias /media/;
+        }
+        location ~ /.well-known/acme-challenge/ {
+            root /var/www/certbot;
+        }
+    }
+    and docker-compose:
+    nginx:
+    build: ./nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - static:/static
+      - ./media:/media
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      - nauczsiepythona
+3. docker-compose up -d certbot with docker-compose:
+    certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email bartektrybalaa@gmail.com
+      -d nauczsiepythona.pl -d www.nauczsiepythona.pl --agree-tos
+4. configure nginx:
+    upstream django {
+        server nauczsiepythona:8000;
+    }
+
+    server {
+        listen 443 ssl;
+
+        server_name nauczsiepythona.pl www.nauczsiepythona.pl;
+
+        ssl_certificate     /etc/letsencrypt/live/nauczsiepythona.pl/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/nauczsiepythona.pl/privkey.pem;
+
+        location / {
+            proxy_set_header Host $host;
+            proxy_pass http://django;
+        }
+        location /static {
+            alias /static/;
+        }
+        location /media {
+            alias /media/;
+        }
+        location ~ /.well-known/acme-challenge/ {
+            root /var/www/certbot;
+        }
+    }
+    server {
+        listen 80;
+
+        server_name nauczsiepythona.pl www.nauczsiepythona.pl;
+        return 301 https://nauczsiepythona.pl$request_uri;
+    }

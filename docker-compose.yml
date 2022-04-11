@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  django_gunicorn:
+  nauczsiepythona:
     volumes:
       - static:/static
     build:
@@ -10,15 +10,24 @@ services:
       - 8000:8000
   nginx:
     build: ./nginx
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
     volumes:
       - static:/static
-      - ./ssl/fullchain.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/fullchain.pem:ro
-      - ./ssl/private.pem:/etc/nginx/ssl/live/nauczsiepythona.pl/private.pem:ro
+      - ./media:/media
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     depends_on:
-      - django_gunicorn
-
+      - nauczsiepythona
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email bartektrybalaa@gmail.com
+      -d nauczsiepythona.pl -d www.nauczsiepythona.pl --agree-tos
 volumes:
  static:
