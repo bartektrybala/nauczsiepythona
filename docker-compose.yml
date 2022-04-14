@@ -3,7 +3,8 @@ version: '3.7'
 services:
   nauczsiepythona:
     volumes:
-      - static:/static
+      - static:/aplikacja-do-nauki-pythona/static
+      - media:/aplikacja-do-nauki-pythona/media
     build:
       context: .
     ports:
@@ -16,7 +17,7 @@ services:
       - 443:443
     volumes:
       - static:/static
-      - ./media:/media
+      - media:/media
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     depends_on:
@@ -31,3 +32,4 @@ services:
       -d nauczsiepythona.pl -d www.nauczsiepythona.pl --agree-tos
 volumes:
  static:
+ media:
