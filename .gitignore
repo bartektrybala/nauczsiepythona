@@ -1,0 +1,6 @@
+*__pycache__/
+passw.py
+venv/*
+.virtualenv/*
+file.py
+Aplikacja-do-nauki-Pythona/static/codemirror
