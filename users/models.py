@@ -19,10 +19,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def save(self):
+    def save(self, *args, **kwargs):
         """
             Set is_staff flag True for enable admin page for users.
         """
+        if self.profile_image._file is None:
+            self.profile_image = self._meta.get_field('profile_image').default
         if not self.pk:
             self.user.is_staff = True
             self.user.save()
