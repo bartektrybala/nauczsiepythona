@@ -3,10 +3,11 @@ version: '3.7'
 services:
   nauczsiepythona:
     volumes:
-      - static:/aplikacja-do-nauki-pythona/static
+      - static:/static
       - media:/aplikacja-do-nauki-pythona/media
     build:
       context: Aplikacja-do-nauki-Pythona/
+    container_name: nauczsiepythona
     ports:
       - 8000:8000
   nginx:

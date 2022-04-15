@@ -1,6 +1,6 @@
 *__pycache__/
 passw.py
-venv/*
-.virtualenv/*
+Aplikacja-do-nauki-Pythona/.virtualenv/*
 file.py
 Aplikacja-do-nauki-Pythona/static/codemirror
+certbot/*
