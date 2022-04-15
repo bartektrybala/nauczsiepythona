@@ -6,7 +6,7 @@ services:
       - static:/aplikacja-do-nauki-pythona/static
       - media:/aplikacja-do-nauki-pythona/media
     build:
-      context: .
+      context: Aplikacja-do-nauki-Pythona/
     ports:
       - 8000:8000
   nginx:
