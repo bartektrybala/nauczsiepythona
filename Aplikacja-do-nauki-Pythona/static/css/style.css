@@ -12,7 +12,7 @@ body
 .index_content
 {
   padding: 10px;
-  max-width: 800px;
+  max-width: 650px;
   margin: auto;
 }
 #footer
@@ -161,4 +161,10 @@ td.rank {
   font-family: "Monospace";
   padding: 5px;
   margin: 5px;
+}
+.code_pomoc {
+  max-width: 850px;
+  max-height: 500px;
+  padding: 10px;
+  margin: auto;
 }

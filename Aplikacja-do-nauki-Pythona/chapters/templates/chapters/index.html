@@ -27,9 +27,6 @@
   </a>
 </div>
 
-  <!-- <div class="jumbotron" style="background-image: url({% static 'img/python 50.png' %}); background-position-x: center;">
-    <h1 style="text-align: center; font-size: 55px; font-weight: bold;">Aplikacja do nauki Pythona</h1>
-  </div> -->
 {% endblock header %}
 
 
@@ -54,10 +51,10 @@
     <table>
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>User</th>
-            <th>Points</th>
-            <th>Education</th>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Punkty</th>
+            <th>Poziom</th>
           </tr>
         </thead>
         <tbody>
@@ -78,7 +75,7 @@
               <img title="profile image" src="{{ user.profile.profile_image.url }}" class="avatar img-circle img-thumbnail" alt="avatar" height="25" width="25">
                {{ user.username }}</td>
             <td class="points">{{ user.profile.points }}</td>
-            <td class="points">{{ user.profile.get_education_display }}</td>
+            <td class="points">{{ user.profile.skill_level }}</td>
           </tr>
           {% endif %}
         {% endfor %}

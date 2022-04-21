@@ -2,15 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-SKIL_LEVELS = (
-    ('0', 'Początkujący'),
-    ('20', 'Nowicjuesz'),
-    ('40', 'Zaawansowany Początkujący'),
-    ('60', 'Młodszy Programista'),
-    ('70', 'Średniozaawansowany Programista'),
-    ('80', 'Biegły Programista'),
-    ('90', 'Ekspert'),
-    ('100', 'Geniusz'),
+SKILL_LEVELS = (
+    (0, 'Początkujący'),
+    (10, 'Nowicjuesz'),
+    (20, 'Zaawansowany Początkujący'),
+    (40, 'Młodszy Programista'),
+    (60, 'Średniozaawansowany Programista'),
+    (80, 'Biegły Programista'),
+    (100, 'Ekspert'),
+    (130, 'Geniusz'),
 )
 
 
@@ -23,9 +23,10 @@ class Profile(models.Model):
         verbose_name_plural = "Ustawienia profilu"
 
     @property
-    def skil_level(self):
-        # TODO: map on SKIL_LEVELS
-        pass
+    def skill_level(self):
+        for level_points, level in reversed(SKILL_LEVELS):
+            if self.points >= level_points:
+                return level
 
     def __str__(self):
         return self.user.username

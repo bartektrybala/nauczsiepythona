@@ -1,0 +1,30 @@
+{% extends 'chapters/baza.html' %}
+{% load  chapters_extras %}
+{% load  static %}
+
+{% block header %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'chapters:index' %}">Początek</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pomoc</li>
+  </ol>
+</nav>
+<div class="text-center mb-2">
+  <h2>Pomoc dla rozadziałów:</h2>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-center">
+{% for chapter in chapters %}
+    <a href="{% url 'chapters:pomoc_chapter' chapter.id %}">
+        <div class="card border-{% get_theme forloop.counter0 %} mx-2 my-2 float-left"
+            style="width: 20rem;">
+            <div class="card-header">{{ chapter.name }}</div>
+            <div class="card-body">
+            </div>
+        </div>
+    </a>
+{% endfor %}
+</div>
+{% endblock content %}

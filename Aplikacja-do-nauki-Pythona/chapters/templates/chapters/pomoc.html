@@ -1,35 +1,25 @@
 {% extends 'chapters/baza.html' %}
+{% block header %}
+<div class="text-center mb-2">
+  <h1>Pomoc dla "{{ chapter.name }}"</h1>
+</div>
+{% endblock header %}
+
 {% block content %}
-<textarea id="code_pomoc">
-    # Listy
-    A = [1, 2, 33, 42, 51,'pirat', 'klawiatura', 16, 7, 8]
-    A.append('6')   # dodaj element
-    A.insert(2, '7')    # wstawianie elementu
-    A.pop()         # usuń ostatni element
-    A.remove('pirat')         # usuwnaie podanego elementu
-    del A[0]            # usuwanie elementu po indeksie
-
-    for e in A:              # pętla po wszystkich elementach listy
-        print(e)
-    for e in range(len(A)):     # pętla po wszystkich indeksach
-        print(A[e])
-    numbers = list(range(15))   # lista z pierwszych 15 liczb
-    cubes = [value**3 for value in range(1, 11)]    # notacja skrócona
-
-    min(), max(), sum(), avg = sum()/len()          # podstawowe statystyki
-
-    x%2     # modulo, reszta z dzielenia x przez 2
-
-</textarea>
-    <script>
-          var editor = CodeMirror.fromTextArea(document.getElementById('code_pomoc'), {
-                mode: "python",
-                theme: "elegant",
-                lineNumbers: true,
-                autoCloseBrackets: true,
-                lineWrapping: true
-            });
-            editor.setSize("100%", "100%");
-      </script>
+<div class="code_pomoc">
+    <textarea id="code_pomoc">
+{{ chapter.pomoc_text }}
+    </textarea>
+</div>
+<script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('code_pomoc'), {
+            mode: "python",
+            theme: "elegant",
+            lineNumbers: true,
+            autoCloseBrackets: true,
+            lineWrapping: true
+        });
+        editor.setSize("100%", "100%");
+    </script>
 
 {% endblock content %}

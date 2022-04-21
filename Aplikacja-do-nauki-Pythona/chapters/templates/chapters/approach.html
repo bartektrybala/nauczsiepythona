@@ -76,25 +76,6 @@
 </div>
 
 
-
-
-<!-- <div style="height: 500px; overflow-y:auto; width: 90%;">
-    <table style="max-height: 500px; overflow: auto;">
-      <tbody>
-        {% for topic in topics %}
-        <tr>
-            <td class="team">
-                <a href="{% url 'chapters:approach' topic.id %}">{{ forloop.counter }}. {{ topic }}</a>
-                <span class="badge badge-primary badge-pill ml-2 float-right">
-                {% get_topic_points_tag topic user %}
-                    /{{ topic.points }}</span>
-            </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-</div> -->
-
 <script>
   $(document).ready(function () {
     $("#code-run-button").on("click", () => {

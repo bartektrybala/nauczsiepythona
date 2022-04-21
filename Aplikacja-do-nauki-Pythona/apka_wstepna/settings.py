@@ -149,5 +149,5 @@ BOOTSTRAP4 = {
     'include_jquery': True
 }
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 

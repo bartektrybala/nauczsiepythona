@@ -10,27 +10,34 @@
 
 
 {% block content %}
-<div style="min-width: 750px;">
-<form action="{% url 'chapters:kodowanie' %}" method="post">
-      <div>
-      {% csrf_token %}
-      {{ form.as_p }}
-        <script>
-              var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-                    mode: "python",
-                    theme: "elegant",
-                    lineNumbers: true,
-                    autoCloseBrackets: true,
-                    lineWrapping: true
-                });
-                editor.setSize("auto", null);
-          </script>
-      </div>
+<div class="d-flex flex-wrap justify-content-center">
+  <div id="console" class="terminal">
+    {% if res %}
+        {{ res|linebreaks }}
+    {% else %}
+      <p>Tutaj pojawi się rezultat....</p>
+      {% endif %}
+    </div>
 
-      <button name="submit" class="btn btn-info float-left">Uruchom</button>
-  </form>
+  <form action="{% url 'chapters:kodowanie' %}" method="post">
+    <div>
+    {% csrf_token %}
+    {{ form.as_p }}
+      <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                  mode: "python",
+                  theme: "elegant",
+                  lineNumbers: true,
+                  autoCloseBrackets: true,
+                  lineWrapping: true
+              });
+              editor.setSize(450, 400);
+        </script>
+    </div>
+
+    <button name="submit" class="btn btn-info float-left">Uruchom</button>
+</form>
 </div>
-
 {% endblock content %}
 
 {% block result %}
