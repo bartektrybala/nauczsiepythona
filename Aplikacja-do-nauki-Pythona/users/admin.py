@@ -11,7 +11,7 @@ class ProfileInline(admin.StackedInline):
     max_num = 1
     can_delete = False
     readonly_fields = ('points',)
-    fields = ('education', 'profile_image', 'points')
+    fields = ('profile_image', 'points')
 
     def get_queryset(self, request):
         if request.user.is_superuser:
