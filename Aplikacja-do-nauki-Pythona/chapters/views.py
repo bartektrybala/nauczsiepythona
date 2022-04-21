@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+from django.shortcuts import get_object_or_404
 
 from .models import Chapter, Topic, UserApproach, Code
 from users.models import Profile
@@ -49,7 +49,7 @@ def chapters(request):
 @login_required
 def topic(request, chapter_id):
     """Show all topics of chapter"""
-    chapter = Chapter.objects.get(id=chapter_id)
+    chapter = get_object_or_404(Chapter, id=chapter_id)
     topics = chapter.topic_set.all()
     context = {'chapter': chapter, 'topics': topics}
     return render(request, 'chapters/topic.html', context)
@@ -100,18 +100,30 @@ def literatura(request):
     """Information about books."""
     return render(request, 'chapters/literatura.html')
 
-
+@login_required
 def pomoc(request):
     """Information about books."""
-    return render(request, 'chapters/pomoc.html')
+    chapters = Chapter.objects.order_by('id')
+    context = {'chapters': chapters}
+    return render(request, 'chapters/pomoc_list.html', context)
+
+
+@login_required
+def pomoc_chapter(request, chapter_id):
+    """
+        Auxliary info for every chapter.
+    """
+    chapter = get_object_or_404(Chapter, id=chapter_id)
+    context = {
+        "chapter": chapter
+        }
+    return render(request, 'chapters/pomoc.html', context)
+
 
 @login_required
 def kodowanie(request):
     """Code mirror for user"""
-    try:
-        code = Code.objects.get(user=request.user)
-    except Code.DoesNotExist:
-        code = Code.objects.create(user=request.user)
+    code, _ = Code.objects.get_or_create(user=request.user)
     res = exec_user_input(code.test_code)
 
     if request.method != 'POST':

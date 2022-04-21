@@ -2,19 +2,31 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-EDUCATION_CHOICES = (
-    ('1', 'Primary School'),
-    ('2', 'High School'),
-    ('3', 'University'),
-    ('4', 'College'),
+SKILL_LEVELS = (
+    (0, 'Początkujący'),
+    (10, 'Nowicjuesz'),
+    (20, 'Zaawansowany Początkujący'),
+    (40, 'Młodszy Programista'),
+    (60, 'Średniozaawansowany Programista'),
+    (80, 'Biegły Programista'),
+    (100, 'Ekspert'),
+    (130, 'Geniusz'),
 )
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    education = models.CharField(choices=EDUCATION_CHOICES, max_length=200)
     profile_image = models.ImageField(default='default-avatar.png', upload_to='users/', null=True, blank=True)
     points = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "Ustawienia profilu"
+
+    @property
+    def skill_level(self):
+        for level_points, level in reversed(SKILL_LEVELS):
+            if self.points >= level_points:
+                return level
 
     def __str__(self):
         return self.user.username

@@ -7,10 +7,11 @@ from .models import Profile
 
 class ProfileInline(admin.StackedInline):
     model = Profile
+    template = "admin/profile_inline.html"
     max_num = 1
     can_delete = False
     readonly_fields = ('points',)
-    fields = ('education', 'profile_image', 'points')
+    fields = ('profile_image', 'points')
 
     def get_queryset(self, request):
         if request.user.is_superuser:

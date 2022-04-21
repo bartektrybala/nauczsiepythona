@@ -36,9 +36,6 @@ class UserRegisterForm(UserCreationForm):
 
 
 class EditProfileForm(forms.ModelForm):
-    education = forms.ChoiceField(choices=EDUCATION_CHOICES, widget=forms.Select(
-        attrs={'class': 'form-control',
-               'id': 'inputEducation'}))
     profile_image = forms.ImageField(required=False, widget=forms.FileInput(
         attrs={'class': 'form-control-file',
                'id': 'inputProfileimage',
@@ -47,5 +44,4 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['education', 'profile_image']
-
+        fields = ['profile_image']

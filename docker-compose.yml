@@ -8,11 +8,13 @@ services:
     build:
       context: Aplikacja-do-nauki-Pythona/
     container_name: nauczsiepythona
+    restart: always
     ports:
       - 8000:8000
   nginx:
     build: ./nginx
-    restart: unless-stopped
+    restart: always
+    container_name: nginx
     ports:
       - 80:80
       - 443:443

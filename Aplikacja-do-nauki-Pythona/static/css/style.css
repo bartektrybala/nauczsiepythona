@@ -9,10 +9,11 @@ body
     justify-content: space-evenly;
     min-width: 800px;
 }
-#content
+.index_content
 {
-  padding: 20px;
-  width: 800px;
+  padding: 10px;
+  max-width: 650px;
+  margin: auto;
 }
 #footer
 {
@@ -37,7 +38,11 @@ body
 }
 .approach_div {
   margin: auto;
-  width: 1000px;
+  max-width: 1000px;
+}
+.approach_task {
+  margin: auto;
+  max-width: 450px;
 }
 .navigation-class_kod
 {
@@ -57,7 +62,6 @@ body
 {
     height: 500px;
     overflow-y:auto;
-    width: 75%;
     margin: auto;
 }
 
@@ -157,4 +161,10 @@ td.rank {
   font-family: "Monospace";
   padding: 5px;
   margin: 5px;
+}
+.code_pomoc {
+  max-width: 850px;
+  max-height: 500px;
+  padding: 10px;
+  margin: auto;
 }

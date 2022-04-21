@@ -17,6 +17,7 @@ urlpatterns = [
 
     # Pomoc
     path('pomoc/', views.pomoc, name='pomoc'),
+    path('pomoc/<int:chapter_id>/', views.pomoc_chapter, name='pomoc_chapter'),
 
     # Show all chapters and topics
     path('chapters/', views.chapters, name='chapters'),
