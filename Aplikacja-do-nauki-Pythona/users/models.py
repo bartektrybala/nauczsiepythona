@@ -16,6 +16,9 @@ class Profile(models.Model):
     profile_image = models.ImageField(default='default-avatar.png', upload_to='users/', null=True, blank=True)
     points = models.IntegerField(default=0)
 
+    class Meta:
+        verbose_name_plural = "Ustawienia profilu"
+
     def __str__(self):
         return self.user.username
 

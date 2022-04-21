@@ -7,6 +7,7 @@ from .models import Profile
 
 class ProfileInline(admin.StackedInline):
     model = Profile
+    template = "admin/profile_inline.html"
     max_num = 1
     can_delete = False
     readonly_fields = ('points',)

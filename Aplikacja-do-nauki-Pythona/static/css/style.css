@@ -11,7 +11,7 @@ body
 }
 .index_content
 {
-  padding: 20px;
+  padding: 10px;
   max-width: 800px;
   margin: auto;
 }
@@ -62,7 +62,6 @@ body
 {
     height: 500px;
     overflow-y:auto;
-    width: 75%;
     margin: auto;
 }
 
