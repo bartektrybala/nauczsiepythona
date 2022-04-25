@@ -5,10 +5,11 @@ services:
     volumes:
       - static:/static
       - media:/aplikacja-do-nauki-pythona/media
+      - db:/aplikacja-do-nauki-pythona/db
     build:
       context: Aplikacja-do-nauki-Pythona/
-    container_name: nauczsiepythona
     restart: always
+    container_name: nauczsiepythona
     ports:
       - 8000:8000
   nginx:
@@ -36,3 +37,4 @@ services:
 volumes:
  static:
  media:
+ db:
