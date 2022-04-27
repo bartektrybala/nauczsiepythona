@@ -21,7 +21,7 @@
 {% endblock header %}
 
 {% block content %}
-<div class="d-flex flex-wrap justify-content-between">
+<div class="d-flex flex-wrap justify-content-center">
   <div class="approach_task">
     <div class="border-bottom">
       <div class="d-flex justify-content-center">
@@ -33,7 +33,9 @@
       <div id="task">
         <div style="padding: 5px; margin: 5px">{{ topic.text|linebreaks }}</div>
         <div class="terminal mx-auto" >
-          {{ topic.code_text|linebreaks }}
+          {% autoescape off %}
+            {{ topic.code_text|linebreaks }}
+          {% endautoescape %}
         </div>
       </div>
 
@@ -48,20 +50,20 @@
 
     </div>
   </div>
-  <div class="w-50">
+  <div>
     <form action="{% url 'chapters:approach' topic.id %}" method="post">
-        <div style="font-size: 14px; opacity: 0.85;">
+        <div style="font-size: 14px; opacity: 0.85;" class="approach_code_pomoc">
         {% csrf_token %}
         {{ form.as_p }}
           <script>
                 var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
                       mode: "python",
-                      theme: "elegant",
+                      theme: "erlang-dark",
                       lineNumbers: true,
                       autoCloseBrackets: true,
                       lineWrapping: true,
                   });
-                editor.setSize(450, 400)
+                editor.setSize("100%", 400);
             </script>
         </div>
 
