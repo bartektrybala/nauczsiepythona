@@ -42,6 +42,7 @@ body
 }
 .approach_task {
   max-width: 450px;
+  padding: 5px;
 }
 .navigation-class_kod
 {
@@ -122,7 +123,8 @@ td.rank {
 }
 .terminal {
   position: relative;
-  width: 80%;
+  min-width: 400px;
+  min-height: 400px;
   max-width: 600px;
   border-radius: 6px;
   padding-top: 45px;
@@ -168,7 +170,9 @@ td.rank {
   margin: auto;
 }
 .approach_code_pomoc {
-  max-width: 700px;
-  padding: 10px;
+  max-width: 600px;
+  width: min(600px, 100vw);
   margin: auto;
+  padding: 5px;
+  padding-bottom: 0;
 }
