@@ -24,10 +24,10 @@ def get_next_topic(topic_id):
         topic_id += 1
     return reverse('chapters:approach', args=[topic_id])
 
-themes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+themes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
 @register.simple_tag
 def get_theme(counter):
-    return themes[counter%8]
+    return themes[counter%7]
 
 @register.simple_tag
 def calc_chapter_progres(user, chapter):

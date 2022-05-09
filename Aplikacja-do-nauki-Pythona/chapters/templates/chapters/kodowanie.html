@@ -20,7 +20,7 @@
     </div>
 
   <form action="{% url 'chapters:kodowanie' %}" method="post">
-    <div>
+    <div class="approach_code_pomoc">
     {% csrf_token %}
     {{ form.as_p }}
       <script>
@@ -31,7 +31,7 @@
                   autoCloseBrackets: true,
                   lineWrapping: true
               });
-              editor.setSize(450, 400);
+              editor.setSize(null, 500);
         </script>
     </div>
 
