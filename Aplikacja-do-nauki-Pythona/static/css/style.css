@@ -41,8 +41,10 @@ body
   max-width: 1000px;
 }
 .approach_task {
-  max-width: 450px;
+  max-width: 400px;
   padding: 5px;
+  width: min(400px, 90vw);
+  margin: 5px;
 }
 .navigation-class_kod
 {
@@ -123,13 +125,12 @@ td.rank {
 }
 .terminal {
   position: relative;
-  min-width: 400px;
+  min-width: 300px;
   height: 400px;
-  width: min(450px, 100vw);
   border-radius: 6px;
   padding-top: 45px;
   margin-top: 8px;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: rgb(15, 15, 16);
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   color: #c2c3c4;
@@ -171,7 +172,7 @@ td.rank {
 }
 .approach_code_pomoc {
   max-width: 600px;
-  width: min(600px, 100vw);
+  width: min(600px, 90vw);
   margin: auto;
   padding: 5px;
   padding-bottom: 0;
