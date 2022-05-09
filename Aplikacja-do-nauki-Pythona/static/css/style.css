@@ -124,12 +124,12 @@ td.rank {
 .terminal {
   position: relative;
   min-width: 400px;
-  min-height: 400px;
-  max-width: 600px;
+  height: 400px;
+  width: min(450px, 100vw);
   border-radius: 6px;
   padding-top: 45px;
   margin-top: 8px;
-  overflow: hidden;
+  overflow: scroll;
   background-color: rgb(15, 15, 16);
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   color: #c2c3c4;

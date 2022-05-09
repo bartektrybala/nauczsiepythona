@@ -3,7 +3,7 @@ import subprocess
 
 def exec_user_input(user_input):
     # write input to file
-    with open('file.py', 'w', newline='', encoding='utf-8') as f:
+    with open('/exec_code/file.py', 'w', newline='', encoding='utf-8') as f:
         f.truncate(0)
         f.write(user_input)
 
