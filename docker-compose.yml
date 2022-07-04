@@ -10,8 +10,6 @@ services:
       context: Aplikacja-do-nauki-Pythona/
     restart: always
     container_name: nauczsiepythona
-    ports:
-      - 8000:8000
   nginx:
     build: ./nginx
     restart: always
