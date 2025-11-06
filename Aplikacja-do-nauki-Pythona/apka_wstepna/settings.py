@@ -26,7 +26,7 @@ SECRET_KEY = ")2$fw_4lmgj&3tcc3d5zm&mwp&jya_-rf*j8e-gd52mi77r%7$"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['nauczsiepythona.pl', 'www.nauczsiepythona.pl']
+ALLOWED_HOSTS = ['nauczsiepythona.pl', 'www.nauczsiepythona.pl', 'localhost']
 
 
 # Application definition

@@ -1,0 +1,26 @@
+services:
+  nauczsiepythona:
+    volumes:
+      - static:/static
+      - media:/aplikacja-do-nauki-pythona/media
+      - db:/aplikacja-do-nauki-pythona/db
+    build:
+      context: Aplikacja-do-nauki-Pythona/
+    restart: always
+    container_name: nauczsiepythona
+  nginx:
+    image: nginx:latest
+    restart: always
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/local.conf:/etc/nginx/nginx.conf
+      - static:/static
+      - media:/media
+    depends_on:
+      - nauczsiepythona
+volumes:
+ static:
+ media:
+ db:
